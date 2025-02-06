@@ -40,7 +40,7 @@
         </field>
     </record>
 
-    <record id= "vehicle.vehicle_action" model="ir.actions.act_window">
+    <record id="vehicle.vehicle_action" model="ir.actions.act_window">
         <field name="name">Vehiculos</field>
         <field name="res_model">vehicle.vehicle</field>
         <field name="view_mode">tree,form</field>
