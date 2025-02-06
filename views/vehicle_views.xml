@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_vehicle_form" model="ir.ui.view">
+        <field name="name">vehicle.form</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehículo">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="vin"/>
+                        <field name="brand"/>
+                        <field name="model"/>
+                        <field name="year"/>
+                        <field name="price"/>
+                        <field name="mileage"/>
+                        <field name="fuel_type"/>
+                        <field name="transmission"/>
+                        <field name="status"/>
+                        <field name="image" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_tree" model="ir.ui.view">
+        <field name="name">vehicle.tree</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Vehículos">
+                <field name="name"/>
+                <field name="vin"/>
+                <field name="brand"/>
+                <field name="model"/>
+                <field name="year"/>
+                <field name="price"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_vehicle_root" name="Gestión de Vehículos" sequence="1"/>
+    <menuitem id="menu_vehicle" name="Vehículos" parent="menu_vehicle_root" action="vehicle.vehicle_action"/>
+
+</odoo>
+
