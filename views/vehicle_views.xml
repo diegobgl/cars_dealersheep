@@ -39,15 +39,17 @@
             </tree>
         </field>
     </record>
-
-    <record id="vehicle.vehicle_action" model="ir.actions.act_window">
-        <field name="name">Vehiculos</field>
+    <record id="action_vehicle_list" model="ir.actions.act_window">
+        <field name="name">Vehículos</field>
         <field name="res_model">vehicle.vehicle</field>
         <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_sm">Crea y gestiona vehículos.</p>
+        </field>
     </record>
 
-    <menuitem id="menu_vehicle_root" name="Gestión de Vehículos" sequence="1"/>
-    <menuitem id="menu_vehicle" name="Vehículos" parent="menu_vehicle_root" action="vehicle.vehicle_action"/>
+    <menuitem id="menu_vehicle_root" name="Gestión de Vehículos" sequence="10"/>
+    <menuitem id="menu_vehicle" name="Vehículos" parent="menu_vehicle_root" action="action_vehicle_list"/>
 
 </odoo>
 
