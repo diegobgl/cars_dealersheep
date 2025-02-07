@@ -1,22 +1,19 @@
 <odoo>
-    <template id="vehicle_snippet" name="Vehicle Snippet">
+    <template id="vehicle_snippet_template" name="Vehicle Snippet">
         <section class="oe_snippet_body">
             <t t-call="cars_dealersheep.VehicleSnippet"/>
         </section>
     </template>
 
-    <template id="vehicle_snippet_block" name="Vehicle Snippet Block">
+    <template id="vehicle_snippet_block" name="Catálogo de Vehículos">
         <div class="oe_snippet_thumbnail">
-            <!--t-att-srcimg src="/cars_dealersheep/static/description/snippet_thumbnail.png"/-->
+            <img src="/cars_dealersheep/static/description/snippet_thumbnail.png"/>
             <span>Catálogo de Vehículos</span>
         </div>
     </template>
 
-    <record id="website.snippet_vehicle" model="ir.ui.view">
-        <field name="name">Vehicle Snippet</field>
-        <field name="key">website.snippet_vehicle</field>
-        <field name="arch" type="xml">
-            <div class="oe_snippet_body" t-call="cars_dealersheep.VehicleSnippet"/>
-        </field>
+    <record id="website_snippet_vehicle" model="website.snippet">
+        <field name="name">Catálogo de Vehículos</field>
+        <field name="template_id" ref="vehicle_snippet_template"/>
     </record>
 </odoo>
