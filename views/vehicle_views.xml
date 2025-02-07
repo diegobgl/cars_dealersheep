@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <form string="Vehículo">
                 <sheet>
+                <button string="data" name="fetch_vehicle_data" type="object" class="oe_highlight"/>
                     <group>
                         <field name="name"/>
                         <field name="vin"/>

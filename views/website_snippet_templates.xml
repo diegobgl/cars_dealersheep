@@ -11,4 +11,12 @@
             <span>Catálogo de Vehículos</span>
         </div>
     </template>
+
+    <record id="website.snippet_vehicle" model="ir.ui.view">
+        <field name="name">Vehicle Snippet</field>
+        <field name="key">website.snippet_vehicle</field>
+        <field name="arch" type="xml">
+            <div class="oe_snippet_body" t-call="vehicle_management.VehicleSnippet"/>
+        </field>
+    </record>
 </odoo>

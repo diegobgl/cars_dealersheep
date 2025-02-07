@@ -51,12 +51,12 @@ class Vehicle(models.Model):
         else:
             raise ValueError("No se pudo obtener información del VIN")
 
-class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+# class SaleOrder(models.Model):
+#     _inherit = 'sale.order'
 
-    vehicle_id = fields.Many2one('vehicle.vehicle', string="Vehículo Vendido")
+#     vehicle_id = fields.Many2one('vehicle.vehicle', string="Vehículo Vendido")
 
-class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
+# class PurchaseOrder(models.Model):
+#     _inherit = 'purchase.order'
 
-    vehicle_id = fields.Many2one('vehicle.vehicle', string="Vehículo Comprado")
+#     vehicle_id = fields.Many2one('vehicle.vehicle', string="Vehículo Comprado")
