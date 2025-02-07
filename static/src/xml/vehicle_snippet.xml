@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<t t-name="vehicle_management.VehicleSnippet">
+<t t-name="cars_dealersheep.VehicleSnippet">
     <div class="container">
         <h2 class="text-center">Catálogo de Vehículos</h2>
         <div class="row">
