@@ -7,7 +7,7 @@
 
     <template id="vehicle_snippet_block" name="Vehicle Snippet Block">
         <div class="oe_snippet_thumbnail">
-            <img src="/cars_dealersheep/static/description/snippet_thumbnail.png"/>
+            <!--t-att-srcimg src="/cars_dealersheep/static/description/snippet_thumbnail.png"/-->
             <span>Catálogo de Vehículos</span>
         </div>
     </template>
