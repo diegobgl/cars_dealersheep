@@ -10,10 +10,11 @@
                             <div class="card-body">
                                 <h5 t-esc="vehicle.name"/>
                                 <p>Marca: <t t-esc="vehicle.brand"/></p>
+
                                 <p>Modelo: <t t-esc="vehicle.model"/></p>
                                 <p>Año: <t t-esc="vehicle.year"/></p>
                                 <p>Precio: <t t-esc="vehicle.price"/> USD</p>
-                                <p>Estado: <t t-esc="vehicle.status\"/></p>
+                                <p>Estado: <t t-esc="vehicle.status"/></p>
                             </div>
                         </div>
                     </div>

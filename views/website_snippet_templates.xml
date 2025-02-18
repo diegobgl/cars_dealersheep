@@ -1,7 +1,7 @@
 <odoo>
     <template id="vehicle_snippet_template" name="Vehicle Snippet">
         <section class="oe_snippet_body">
-            <t t-call="cars_dealersheep.VehicleSnippet"/>
+            <t t-call="cars_dealersheep.vehicle_snippet"/> <!-- Debe coincidir con el archivo XML -->
         </section>
     </template>
 
