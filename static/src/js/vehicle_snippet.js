@@ -14,4 +14,4 @@ export class VehicleSnippet extends Component {
     }
 }
 
-VehicleSnippet.template = "cars_dealersheep.VehicleSnippet";
+VehicleSnippet.template = "cars_dealersheep.vehicle_snippet";
