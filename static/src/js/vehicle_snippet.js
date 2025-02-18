@@ -1,25 +1,15 @@
-/** @odoo-module **/
-import { Component, useState, onWillStart } from "@odoo/owl";
-import { useService } from "@web/core/utils/hooks";
+odoo.define('cars_dealersheep.vehicle_snippet', function(require) {
+    "use strict";
+    var PublicWidget = require('web.public.widget');
+    var rpc = require('web.rpc');
 
-export class VehicleSnippet extends Component {
-    setup() {
-        this.orm = useService("orm");
-        this.state = useState({ vehicles: [] });
+    var VehicleSnippet = PublicWidget.Widget.extend({
+        selector: '.vehicle_snippet',
+        start: function() {
+            console.log("Snippet de Vehículos Cargado!");
+        }
+    });
 
-        onWillStart(async () => {
-            try {
-                this.state.vehicles = await this.orm.call(
-                    "vehicle.vehicle", 
-                    "search_read", 
-                    [["status", "=", "available"]],  // Filtra vehículos disponibles
-                    ["id", "name", "brand", "model", "year", "price", "status"]
-                );
-            } catch (error) {
-                console.error("Error al cargar los vehículos:", error);
-            }
-        });
-    }
-}
-
-VehicleSnippet.template = "cars_dealersheep.vehicle_snippet";
+    PublicWidget.registry.vehicle_snippet = VehicleSnippet;
+    return VehicleSnippet;
+});

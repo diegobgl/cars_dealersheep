@@ -1,10 +1,12 @@
 <odoo>
     <!-- Plantilla del Snippet -->
-    <template id="vehicle_snippet_template" name="Vehicle Snippet">
-        <section class="oe_snippet_body">
-            <t t-call="cars_dealersheep.vehicle_snippet"/>
-        </section>
+    <template id="external_snippets" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="cars_dealersheep.vehicle_snippet"
+            t-thumbnail="/cars_dealersheep/static/src/img/icon.png"/>
+        </xpath>
     </template>
+
 
     <!-- Bloque del Snippet en el Website Builder -->
     <template id="vehicle_snippet_block" name="Catálogo de Vehículos">
