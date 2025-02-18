@@ -7,6 +7,7 @@
     'data': [
         'views/website_snippet_templates.xml',
         'views/vehicle_views.xml',
+        'views/assets.xml',
 
     ],
     'assets': {

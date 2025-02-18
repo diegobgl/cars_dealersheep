@@ -14,14 +14,8 @@
         </div>
     </template>
 
-    <!-- Registro del Snippet en el Website Builder -->
-    <record id="website_snippet_vehicle" model="ir.ui.view">
-        <field name="name">Vehicle Snippet</field>
-        <field name="type">qweb</field>  <!-- CORRECCIÓN: Definir el tipo de vista -->
-        <field name="arch" type="xml">
-            <template id="vehicle_snippet_view">
-                <t t-call="cars_dealersheep.vehicle_snippet_template"/>
-            </template>
-        </field>
-    </record>
+    <!-- Categoría del Snippet -->
+    <template id="vehicle_snippet_category" name="Snippets de Vehículos">
+        <t t-snippet="cars_dealersheep.vehicle_snippet_template"/>
+    </template>
 </odoo>
