@@ -1,5 +1,5 @@
 /** @odoo-module **/
-import { Component, onWillStart, useState } from "@odoo/owl";
+import { Component, useState, onWillStart } from "@odoo/owl";
 import { useService } from "@web/core/utils/hooks";
 
 export class VehicleSnippet extends Component {
@@ -8,8 +8,16 @@ export class VehicleSnippet extends Component {
         this.state = useState({ vehicles: [] });
 
         onWillStart(async () => {
-            this.state.vehicles = await this.orm.call("vehicle.vehicle", "search_read", [], 
-                ["name", "brand", "model", "year", "price", "status", "image"]);
+            try {
+                this.state.vehicles = await this.orm.call(
+                    "vehicle.vehicle", 
+                    "search_read", 
+                    [["status", "=", "available"]],  // Filtra vehículos disponibles
+                    ["id", "name", "brand", "model", "year", "price", "status"]
+                );
+            } catch (error) {
+                console.error("Error al cargar los vehículos:", error);
+            }
         });
     }
 }
