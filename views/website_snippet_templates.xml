@@ -1,12 +1,12 @@
 <odoo>
-    <!-- Snippet Template -->
+    <!-- Plantilla del Snippet -->
     <template id="vehicle_snippet_template" name="Vehicle Snippet">
         <section class="oe_snippet_body">
             <t t-call="cars_dealersheep.vehicle_snippet"/>
         </section>
     </template>
 
-    <!-- Snippet Thumbnail en el Website Builder -->
+    <!-- Bloque del Snippet en el Website Builder -->
     <template id="vehicle_snippet_block" name="Catálogo de Vehículos">
         <div class="oe_snippet_thumbnail">
             <img src="/cars_dealersheep/static/description/snippet_thumbnail.png"/>
@@ -14,12 +14,14 @@
         </div>
     </template>
 
-    <!-- Registro en el Website Builder -->
+    <!-- Registro del Snippet en el Website Builder -->
     <record id="website_snippet_vehicle" model="ir.ui.view">
         <field name="name">Vehicle Snippet</field>
-        <field name="key">website.snippet_vehicle</field>
+        <field name="type">qweb</field>  <!-- CORRECCIÓN: Definir el tipo de vista -->
         <field name="arch" type="xml">
-            <div class="oe_snippet_body" t-call="cars_dealersheep.vehicle_snippet_template"/>
+            <template id="vehicle_snippet_view">
+                <t t-call="cars_dealersheep.vehicle_snippet_template"/>
+            </template>
         </field>
     </record>
 </odoo>
