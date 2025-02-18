@@ -1,0 +1,7 @@
+<odoo>
+    <template id="theme_assets" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/cars_dealersheep/static/src/scss/theme.scss"/>
+        </xpath>
+    </template>
+</odoo>
