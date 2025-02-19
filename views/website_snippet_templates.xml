@@ -4,17 +4,4 @@
             <t t-snippet="cars_dealersheep.vehicle_snippet"/>
         </xpath>
     </template>
-
-
-    <!-- Bloque del Snippet en el Website Builder -->
-    <template id="vehicle_snippet_block" name="Catálogo de Vehículos">
-        <div class="oe_snippet_thumbnail">
-            <span>Catálogo de Vehículos</span>
-        </div>
-    </template>
-
-    <!-- Categoría del Snippet -->
-    <template id="vehicle_snippet_category" name="Snippets de Vehículos">
-        <t t-snippet="cars_dealersheep.vehicle_snippet_template"/>
-    </template>
 </odoo>
