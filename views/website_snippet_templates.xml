@@ -1,7 +1,7 @@
 <odoo>
     <template id="external_snippets" inherit_id="website.snippets" priority="8">
         <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
-            <t t-snippet="cars_dealersheep.vehicle_snippet"/>
+            <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_snippet"/> <!-- Corregido -->
         </xpath>
     </template>
 </odoo>
