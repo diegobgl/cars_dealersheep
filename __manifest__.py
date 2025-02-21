@@ -6,7 +6,7 @@
     'depends': ['website'],
     'data': [
         'views/vehicle_snippet.xml',            # Definición del snippet
-        #'views/website_snippet_templates.xml',    # Herencia de website.snippets
+        'views/website_snippet_templates.xml',    # Herencia de website.snippets
         'views/vehicle_views.xml',
 
 
