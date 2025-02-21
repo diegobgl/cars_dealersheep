@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<t t-name="cars_dealersheep.vehicle_snippet">
+    <div class="container">
+        <h2 class="text-center">Catálogo de Vehículos</h2>
+        <div class="row">
+            <t t-foreach="state.vehicles" t-as="vehicle">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img t-att-src="'/web/image/vehicle.vehicle/' + vehicle.id + '/image'" class="card-img-top"/>
+                        <div class="card-body">
+                            <h5 t-esc="vehicle.name"/>
+                            <p>Marca: <t t-esc="vehicle.brand"/></p>
+                            <p>Modelo: <t t-esc="vehicle.model"/></p>
+                            <p>Año: <t t-esc="vehicle.year"/></p>
+                            <p>Precio: <t t-esc="vehicle.price"/> USD</p>
+                            <p>Estado: <t t-esc="vehicle.status"/></p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </div>
+</t>
