@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Registro de la vista QWeb -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
-        <!-- Nombre interno de la plantilla que usarás en tu herencia: t-snippet="cars_dealersheep.vehicle_snippet" -->
         <t t-name="cars_dealersheep.vehicle_snippet">
             <div class="container vehicle_snippet">
                 <h2 class="text-center">Catálogo de Vehículos</h2>
                 <div class="row">
-                    <!-- Ejemplo de cómo podrías iterar sobre vehículos.
-                         Aquí 'state.vehicles' es un placeholder: ajusta la variable a tu método real. -->
                     <t t-foreach="state.vehicles" t-as="vehicle">
                         <div class="col-md-4 mb-3">
                             <div class="card">
-                                <!-- Muestra la imagen del vehículo desde /web/image/vehicle.vehicle/<id>/image -->
                                 <img t-att-src="'/web/image/vehicle.vehicle/' + vehicle.id + '/image'" class="card-img-top"/>
                                 <div class="card-body">
                                     <h5 t-esc="vehicle.name"/>
