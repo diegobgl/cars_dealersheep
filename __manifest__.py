@@ -14,7 +14,7 @@
     'assets': {
         'web.assets_frontend': [
             'cars_dealersheep/static/src/js/vehicle_snippet.js',
-            'cars_dealersheep/static/src/xml/vehicle_snippet.xml',
+            #'cars_dealersheep/static/src/xml/vehicle_snippet.xml',
             'cars_dealersheep/static/src/scss/theme.scss',
         ],
     },
