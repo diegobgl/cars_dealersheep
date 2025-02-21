@@ -5,9 +5,10 @@
     'summary': 'Gestión y visualización de vehículos en Odoo Website',
     'depends': ['website'],
     'data': [
-        'views/website_snippet_templates.xml',
+        'views/vehicle_snippet.xml',            # Definición del snippet
+        'views/website_snippet_templates.xml',    # Herencia de website.snippets
         'views/vehicle_views.xml',
-        'views/vehicle_snippet.xml'
+
 
     ],
     'assets': {
