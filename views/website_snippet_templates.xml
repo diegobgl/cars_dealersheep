@@ -1,12 +1,12 @@
 <odoo>
     <template id="external_snippets" inherit_id="website.snippets" priority="8">
-        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
-            <!-- Referenciamos el ID "cars_dealersheep_vehicle_snippet",
-                 que a nivel interno es cars_dealersheep.cars_dealersheep_vehicle_snippet -->
-            <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_snippet"
-               data-preview="/cars_dealersheep/static/src/img/snippet_preview.png"
-               t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
+        <xpath expr="//div[@id='snippet_structure']" position="inside">
+            <!-- El snippet se ubicará en la sección principal de snippets -->
+            <t t-snippet="cars_dealersheep.vehicle_snippet"
                name="Vehicle Snippet"
+               data-categories="featured"
+               t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
+               data-preview="/cars_dealersheep/static/src/img/snippet_preview.png"
             />
         </xpath>
     </template>
