@@ -3,7 +3,7 @@
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
             <!-- Fallback en modo edición: si no existe request, se usa lista vacía -->
-            <t t-set="vehicles" t-value="request and request.env and request.env['vehicle.vehicle'].sudo().search([]) or []"/>
+            <!--t t-set="vehicles" t-value="request and request.env and request.env['vehicle.vehicle'].sudo().search([]) or []"/-->
             
             <!-- Marcamos el contenedor como droppable en el editor -->
             <div class="container vehicle_snippet oe_structure" data-oe-drop="true">
