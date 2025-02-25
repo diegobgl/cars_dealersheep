@@ -3,7 +3,6 @@
     <template id="vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
             <!-- Se limita a llamar al contenido que definimos antes -->
-            <t t-call="cars_dealersheep.vehicle_snippet_content"/>
         </t>
     </template>
 
