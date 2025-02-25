@@ -13,10 +13,4 @@
         </t>
     </template>
 
-    <!-- Estilos CSS opcionales (si se necesitan) -->
-    <template id="vehicle_snippet_assets" inherit_id="web.assets_frontend">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" href="/cars_dealersheep/static/src/css/vehicle_snippet.css"/>
-        </xpath>
-    </template>
 </odoo>
