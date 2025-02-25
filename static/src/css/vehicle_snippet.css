@@ -1,0 +1,5 @@
+/* Asegura que la miniatura se vea en la paleta */
+.oe_snippet .oe_snippet_thumbnail img {
+    width: 100%;
+    height: auto;
+}
