@@ -3,7 +3,6 @@
     <template id="external_snippets" inherit_id="website.snippets">
         <xpath expr="//div[@id='snippet_structure']" position="inside">
             <t t-snippet="cars_dealersheep.cars_dealersheep.vehicle_snippet"
-            name="Catálogo de Vehículos"
             t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
             data-preview="/cars_dealersheep/static/src/img/snippet_preview.png"
             data-categories="featured"/>
