@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="external_snippets" inherit_id="website.snippets">
+    <template id="external_snippets" inherit_id="website.snippets" priority="10">
         <xpath expr="//div[@id='snippet_structure']" position="inside">
             <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_snippet"
-            t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
-            data-preview="/cars_dealersheep/static/src/img/snippet_preview.png"
-            data-categories="featured"/>
+               name="Vehicle Snippet"
+               t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
+               data-preview="/cars_dealersheep/static/src/img/snippet_preview.png"
+               data-categories="featured"/>
         </xpath>
     </template>
-
 </odoo>

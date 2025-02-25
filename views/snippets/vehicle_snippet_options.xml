@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="vehicle_snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='Box']" position="inside">
+            <div data-selector=".vehicle_snippet">
+                <!-- Ejemplo: Opción para editar el título -->
+                <we-input name="Título" placeholder="Escribe un título"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

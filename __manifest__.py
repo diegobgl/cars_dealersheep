@@ -6,7 +6,8 @@
     'depends': ['website'],
     'data': [
         'views/snippets/website_snippet_templates.xml', 
-        'views/snippets/vehicle_snippet.xml',    
+        'views/snippets/vehicle_snippet.xml', 
+        'views/snippets/vehicle_snippet_options.xml',   
         'views/vehicle_views.xml',
 
 
@@ -14,6 +15,7 @@
     'assets': {
         'web.assets_frontend': [
             'cars_dealersheep/static/src/js/vehicle_snippet.js',
+            'cars_dealersheep/static/src/js/vehicle_snippet_options.xml',
             'cars_dealersheep/static/src/scss/theme.scss',
             'cars_dealersheep/static/src/css/vehicle_snippet.css',
         ],
