@@ -4,7 +4,6 @@
         <xpath expr="//div[@id='snippet_structure']" position="inside">
             <!-- Definición del snippet en la paleta -->
             <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_snippet"
-               data-variation-name="Catálogo de Vehículos"
                t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
                data-preview="/cars_dealersheep/static/src/img/snippet_preview.png"
                data-categories="featured"
