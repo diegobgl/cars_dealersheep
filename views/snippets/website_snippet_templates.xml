@@ -1,4 +1,5 @@
 <odoo>
+    <!--
     <template id="external_snippets" inherit_id="website.snippets" priority="8">
         <xpath expr="//div[@id='snippet_structure']" position="inside">
             <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_snippet"
@@ -9,4 +10,5 @@
             />
         </xpath>
     </template>
+    -->
 </odoo>

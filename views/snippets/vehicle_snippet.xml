@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!-- Nuestro snippet, ahora sin las clases "oe_structure" ni "data-oe-drop" -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
             <!-- Fallback en modo edición: si no existe request, se usa lista vacía -->
             <t t-set="vehicles" t-value="request and request.env and request.env['vehicle.vehicle'].sudo().search([]) or []"/>
             
-            <!-- Marcamos el contenedor como droppable en el editor -->
-            <div class="container vehicle_snippet oe_structure" data-oe-drop="true">
+            <!-- Contenedor normal -->
+            <div class="container vehicle_snippet">
                 <h2 class="text-center">Catálogo de Vehículos</h2>
                 <!-- Contenedor que será actualizado vía JS -->
                 <div class="vehicle-list">
                     <t t-foreach="vehicles" t-as="vehicle">
                         <div class="vehicle-item">
                             <div class="card">
-                                <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="card-img-top" t-att-alt="vehicle.name"/>
+                                <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'"
+                                     class="card-img-top"
+                                     t-att-alt="vehicle.name"/>
                                 <div class="card-body">
                                     <h5 t-esc="vehicle.name"/>
                                     <p>Marca: <t t-esc="vehicle.brand"/></p>
@@ -28,5 +31,14 @@
                 </div>
             </div>
         </t>
+    </template>
+
+    <!-- Inyectamos el contenido directamente en la plantilla base (o donde prefieras) -->
+    <template id="cars_dealersheep_vehicle_snippet_autoinclude"
+              inherit_id="website.layout"
+              name="Autoinclude Vehicle Snippet">
+        <xpath expr="//div[@id='wrap']" position="inside">
+            <t t-call="cars_dealersheep.vehicle_snippet"/>
+        </xpath>
     </template>
 </odoo>
