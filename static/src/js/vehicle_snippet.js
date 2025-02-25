@@ -17,7 +17,8 @@ odoo.define('cars_dealersheep.vehicle_snippet', function(require) {
                     vehicles.forEach(function(vehicle) {
                         html += '<div class="vehicle-item">' +
                                     '<div class="card">' +
-                                        '<img src="/web/image/vehicle.vehicle/' + (vehicle.id|string) + '/image" class="card-img-top" alt="' + vehicle.name + '"/>' +
+                                        '<img src="/web/image/vehicle.vehicle/' + (vehicle.id|string) + '/image" ' +
+                                             'class="card-img-top" alt="' + vehicle.name + '"/>' +
                                         '<div class="card-body">' +
                                             '<h5>' + vehicle.name + '</h5>' +
                                             '<p>Marca: ' + vehicle.brand + '</p>' +
@@ -32,6 +33,7 @@ odoo.define('cars_dealersheep.vehicle_snippet', function(require) {
                 } else {
                     html = '<p>No hay vehículos disponibles.</p>';
                 }
+                // Sustitución del contenido de .vehicle-list
                 self.$el.find('.vehicle-list').html(html);
             });
         }
