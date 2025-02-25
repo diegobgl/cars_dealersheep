@@ -5,7 +5,6 @@
         <t t-name="cars_dealersheep.vehicle_snippet"
                 t-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
                data-preview="/cars_dealersheep/static/src/img/snippet_preview.png">
-            </div>
         </t>
     </template>
 </odoo>
