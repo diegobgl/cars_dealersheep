@@ -7,7 +7,7 @@
     'data': [
         'views/snippets/website_snippet_templates.xml', 
         'views/snippets/vehicle_snippet.xml', 
-        'views/snippets/vehicle_snippet_options.xml',   
+        'views/static/src/js/vehicle_snippet_options.xml',   
         'views/vehicle_views.xml',
 
 
