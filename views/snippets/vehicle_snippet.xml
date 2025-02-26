@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Snippet en la paleta (solo miniatura) -->
+    <!-- Template Base (ID completo) -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
             <div class="vehicle_snippet s_nippet" 
                  data-oe-type="snippet" 
                  data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png">
-                <!-- Contenido de la miniatura (opcional) -->
+                <!-- Contenido de la miniatura -->
                 <div class="container text-center py-2">
                     <i class="fa fa-car"/> Vehículos
                 </div>
@@ -14,8 +14,9 @@
         </t>
     </template>
 
-    <!-- Contenido real al arrastrar -->
-    <template id="vehicle_snippet_content" inherit_id="cars_dealersheep.vehicle_snippet">
+    <!-- Template Heredado (usar ID completo en inherit_id) -->
+    <template id="vehicle_snippet_content" 
+              inherit_id="cars_dealersheep.cars_dealersheep_vehicle_snippet"> <!-- ✔️ ID correcto -->
         <xpath expr="." position="replace">
             <div class="vehicle_snippet oe_structure" data-oe-drop="true">
                 <h2 class="text-center">Catálogo de Vehículos</h2>
