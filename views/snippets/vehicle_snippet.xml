@@ -3,13 +3,15 @@
     <!-- Template del Snippet de Vehículos -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
+            <!-- Determinar el modo preview desde el contexto -->
+            <t t-set="is_preview" t-value="context.get('snippet_preview', False)"/>
             <!-- Modo Preview: Se muestra solo la imagen de preview -->
-            <t t-if="request and request.context.get('snippet_preview')">
+            <t t-if="is_preview">
                 <img src="/cars_dealersheep/static/src/img/snippet_preview.png" alt="Preview del Snippet"/>
             </t>
             <!-- Modo Real: Se muestra el contenido dinámico -->
             <t t-else="">
-                <div class="container vehicle_snippets oe_structure" data-oe-drop="true">
+                <div class="container vehicle_snippet oe_structure" data-oe-drop="true">
                     <h2 class="text-center">Catálogo de Vehículos</h2>
                     <div class="vehicle-list"></div>
                 </div>
