@@ -3,7 +3,7 @@
     <!-- Estructura del Snippet (válida para cualquier tema) -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
-            <div class="s_vehicle_snippet s_nippet oe_editable" 
+            <div class="s_vehicle_snippet s_nippet ui-draggable" 
                 data-oe-type="snippet" 
                 data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
                 data-oe-drop="true"
