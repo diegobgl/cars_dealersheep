@@ -3,13 +3,13 @@
     <!-- Estructura del Snippet (válida para cualquier tema) -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
-            <div class="s_vehicle_snippet s_nippet" 
-                 data-oe-type="snippet" 
-                 data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
-                 data-oe-drop="true"
-                 data-snippet-id="vehicle_snippet">
+            <div class="s_vehicle_snippet s_nippet oe_editable" 
+                data-oe-type="snippet" 
+                data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
+                data-oe-drop="true"
+                data-snippet-id="vehicle_snippet">
                 <div class="container oe_structure">
-                    <h2 class="text-center">Catálogo de Vehículos</h2>
+                    <h2 class="text-center o_default_snippet_text">Catálogo de Vehículos</h2>
                     <div class="vehicle-list row"></div>
                 </div>
             </div>

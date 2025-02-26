@@ -3,7 +3,7 @@
 import publicWidget from 'web.public.widget';
 
 publicWidget.registry.VehicleSnippet = publicWidget.Widget.extend({
-    selector: '.vehicle_snippet',
+    selector: '.s_vehicle_snippet',
     start() {
         console.log("Snippet de Vehículos Cargado!");
         const vehicleList = this.el.querySelector('.vehicle-list');
