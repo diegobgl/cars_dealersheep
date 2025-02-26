@@ -4,7 +4,7 @@ import options from 'web_editor.snippets.options';
 
 options.registry.VehicleSnippetOptions = options.Class.extend({
     start() {
-        // Aquí puedes agregar lógica para opciones personalizadas.
+        // Lógica de opciones personalizada (si se requiere)
         return this._super.apply(this, arguments);
     },
 });

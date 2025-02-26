@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Template del Snippet de Vehículos sin modo preview -->
+    <!-- Template del Snippet de Vehículos (sin lógica condicional) -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
             <div class="container vehicle_snippet oe_structure" data-oe-drop="true">
