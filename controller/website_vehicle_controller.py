@@ -10,7 +10,10 @@ class VehicleWebsiteController(http.Controller):
             'id': vehicle.id,
             'name': vehicle.name,
             'brand': vehicle.brand,
+            'model': vehicle.model,  # Nuevo campo
+            'year': vehicle.year,     # Nuevo campo
             'price': vehicle.price,
+            'status': vehicle.status, # Nuevo campo
             'fuel_type': vehicle.fuel_type,
             'image_url': f'/web/image/vehicle.vehicle/{vehicle.id}/image'
         } for vehicle in vehicles]
