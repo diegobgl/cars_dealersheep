@@ -12,19 +12,19 @@ publicWidget.registry.VehicleSnippet = publicWidget.Widget.extend({
                 route: '/vehicles/json',
                 params: {},
             }).then(vehicles => {
-                let html = ``;
+                let html = '';
                 if (vehicles.length > 0) {
                     vehicles.forEach(vehicle => {
-                        html += `<div class="vehicle-item">
-                            <div class="card">
-                                <img src="/web/image/vehicle.vehicle/${vehicle.id}/image" class="card-img-top" alt="${vehicle.name || ''}"/>
+                        html += `<div class="vehicle-item col-md-4 mb-3">
+                            <div class="card vehicle-card">
+                                <img src="/web/image/vehicle.vehicle/${vehicle.id}/image" class="card-img-top" alt="${vehicle.name || ''}">
                                 <div class="card-body">
-                                    <h5>${vehicle.name || ''}</h5>
-                                    <p>Marca: ${vehicle.brand || ''}</p>
-                                    <p>Modelo: ${vehicle.model || ''}</p>
-                                    <p>Año: ${vehicle.year || ''}</p>
-                                    <p>Precio: ${vehicle.price || ''} USD</p>
-                                    <p>Estado: ${vehicle.status || ''}</p>
+                                    <h5 class="card-title">${vehicle.name || ''}</h5>
+                                    <p class="card-text">Marca: ${vehicle.brand || ''}</p>
+                                    <p class="card-text">Modelo: ${vehicle.model || ''}</p>
+                                    <p class="card-text">Año: ${vehicle.year || ''}</p>
+                                    <p class="card-text">Precio: ${vehicle.price || ''} USD</p>
+                                    <p class="card-text">Estado: ${vehicle.status || ''}</p>
                                 </div>
                             </div>
                         </div>`;

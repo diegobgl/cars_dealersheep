@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Estructura del Snippet usando section (válida para cualquier tema) -->
+    <!-- Estructura del Snippet usando <section> para mayor integración en la página -->
     <template id="cars_dealersheep_vehicle_snippet" name="Vehicle Snippet">
         <t t-name="cars_dealersheep.vehicle_snippet">
             <section class="s_vehicle_snippet ui-draggable" 
@@ -10,6 +10,7 @@
                      data-snippet-id="vehicle_snippet">
                 <div class="container oe_structure">
                     <h2 class="text-center o_default_snippet_text">Catálogo de Vehículos</h2>
+                    <!-- La clase row servirá para distribuir las cards en columnas -->
                     <div class="vehicle-list row"></div>
                 </div>
             </section>
