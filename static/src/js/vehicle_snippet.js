@@ -15,15 +15,15 @@ publicWidget.registry.VehicleSnippet = publicWidget.Widget.extend({
                 let html = '';
                 if (vehicles.length > 0) {
                     vehicles.forEach(vehicle => {
-                        html += `<div class="vehicle-item col-md-4 mb-3">
+                        html += `<div class="vehicle-item col-md-2 mb-2">
                             <div class="card vehicle-card">
                                 <img src="/web/image/vehicle.vehicle/${vehicle.id}/image" class="card-img-top" alt="${vehicle.name || ''}">
                                 <div class="card-body">
-                                    <h5 class="card-title">${vehicle.name || ''}</h5>
+                                    <h5 class="card-title">${vehicle.name || ''}</h4>
                                     <p class="card-text">Marca: ${vehicle.brand || ''}</p>
                                     <p class="card-text">Modelo: ${vehicle.model || ''}</p>
                                     <p class="card-text">Año: ${vehicle.year || ''}</p>
-                                    <p class="card-text">Precio: ${vehicle.price || ''} USD</p>
+                                    <p class="card-text">Precio: ${vehicle.price || ''} CLP</p>
                                     <p class="card-text">Estado: ${vehicle.status || ''}</p>
                                 </div>
                             </div>
