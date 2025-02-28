@@ -19,7 +19,31 @@
                         <field name="transmission"/>
                         <field name="status"/>
                         <field name="image" widget="image"/>
-                    </group>
+                        </group>
+                        <xpath expr="//notebook" position="inside">
+                        <page string="Documentación">
+                            <group>
+                                <group>
+                                    <field name="patente"/>
+                                    <field name="motor_number"/>
+                                    <field name="chasis_number"/>
+                                </group>
+                                <group>
+                                    <field name="matriculation_date"/>
+                                    <field name="review_date"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="registration_certificate" filename="registration_certificate_filename"/>
+                                <field name="circulation_permit" filename="circulation_permit_filename"/>
+                                <field name="soat" filename="soat_filename"/>
+                                <field name="certificate_of_history" filename="certificate_of_history_filename"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                    </xpath>
                 </sheet>
             </form>
         </field>
