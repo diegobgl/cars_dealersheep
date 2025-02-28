@@ -47,8 +47,13 @@ class Vehicle(models.Model):
     certificate_of_history = fields.Binary(string="Certificado de Multas")
     description = fields.Text(string="Descripción")
     images = fields.One2many('vehicle.image', 'vehicle_id', string="Galería de Imágenes")
-
-
+    vehicle_type = fields.Selection([
+        ('auto', 'Auto'),
+        ('camioneta', 'Camioneta'),
+        ('camion', 'Camión'),
+        ('moto', 'Moto'),
+    ], string="Tipo de Vehículo", tracking=True)
+    ad_ids = fields.One2many('vehicle.ad', 'vehicle_id', string="Avisos Publicados")
 
 
     def fetch_vehicle_data(self):

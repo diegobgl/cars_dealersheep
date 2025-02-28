@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista Tree para Avisos -->
+    <record id="view_vehicle_ad_tree" model="ir.ui.view">
+        <field name="name">vehicle.ad.tree</field>
+        <field name="model">vehicle.ad</field>
+        <field name="arch" type="xml">
+            <tree string="Avisos de Vehículos">
+                <field name="vehicle_id"/>
+                <field name="ad_state"/>
+                <field name="publish_date"/>
+                <field name="external_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Vista Formulario para Avisos -->
+    <record id="view_vehicle_ad_form" model="ir.ui.view">
+        <field name="name">vehicle.ad.form</field>
+        <field name="model">vehicle.ad</field>
+        <field name="arch" type="xml">
+            <form string="Aviso de Vehículo">
+                <sheet>
+                    <group>
+                        <field name="vehicle_id"/>
+                        <field name="ad_state"/>
+                        <field name="publish_date"/>
+                        <field name="external_id"/>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Acción para avisos -->
+    <record id="action_vehicle_ad" model="ir.actions.act_window">
+        <field name="name">Avisos Publicados</field>
+        <field name="res_model">vehicle.ad</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- Menú para avisos, integrado en el menú raíz de Vehículos -->
+    <menuitem id="menu_vehicle_ad" name="Avisos Publicados" parent="menu_vehicle_root" action="action_vehicle_ad" sequence="60"/>
+</odoo>

@@ -14,6 +14,7 @@
         'views/vehicle_views.xml',
         'views/buyer_seller_views.xml',
         'views/vehicle_sale_views.xml',
+        'views/vehicle_ad.xml',
         
 
 
