@@ -15,24 +15,21 @@ publicWidget.registry.SingleVehicleSnippet = publicWidget.Widget.extend({
             params: {},
         }).then(vehicles => {
             if (vehicles.length > 0) {
-                // Tomamos el primer vehículo para mostrarlo
-                const vehicle = vehicles[0];
+                const vehicle = vehicles[0]; // Puedes personalizar la lógica
                 if (imgEl) {
-                    // Actualizamos la imagen usando la URL de imagen del vehículo
                     imgEl.setAttribute('src', '/web/image/vehicle.vehicle/' + vehicle.id + '/image');
                 }
                 if (titleEl) {
                     titleEl.textContent = vehicle.name;
                 }
                 if (pEl) {
-                    pEl.textContent = 'Modelo: ' + (vehicle.model || '') + ' - Año: ' + (vehicle.year || '');
+                    pEl.textContent = `Modelo: ${vehicle.model || ''} - Año: ${vehicle.year || ''}`;
                 }
             }
         }).catch(err => {
-            console.error("Error RPC /vehicles/json:", err);
+            console.error("Error en RPC /vehicles/json:", err);
         });
     },
 });
 
 export default publicWidget.registry.SingleVehicleSnippet;
-
