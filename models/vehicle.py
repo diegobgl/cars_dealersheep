@@ -35,6 +35,18 @@ class Vehicle(models.Model):
     )
     image = fields.Image(string="Imagen del Vehículo")
 
+    # Campos adicionales para documentación en Chile
+    patente = fields.Char(string="Patente", tracking=True)
+    motor_number = fields.Char(string="Número de Motor", tracking=True)
+    chasis_number = fields.Char(string="Número de Chasis", tracking=True)
+    matriculation_date = fields.Date(string="Fecha de Matriculación")
+    review_date = fields.Date(string="Fecha de Revisión Técnica")
+    registration_certificate = fields.Binary(string="Certificado de Inscripción")
+    circulation_permit = fields.Binary(string="Permiso de Circulación")
+    soat = fields.Binary(string="Certificado SOAP")
+    certificate_of_history = fields.Binary(string="Certificado de Multas")
+
+
     def fetch_vehicle_data(self):
         """ Consulta la API de la NHTSA con el VIN y completa la información del vehículo. """
         api_url = "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/{vin}?format=json"
