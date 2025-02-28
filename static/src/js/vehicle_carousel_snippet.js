@@ -6,6 +6,7 @@ publicWidget.registry.VehicleCarouselSnippet = publicWidget.Widget.extend({
     selector: '.s_vehicle_carousel',
     start() {
         console.log("Vehicle Carousel Snippet Cargado");
+        const $carousel = this.$el.find('#vehicleCarousel');
         const carouselInner = this.el.querySelector('.carousel-inner');
         if (!carouselInner) return;
         this._rpc({
@@ -31,6 +32,11 @@ publicWidget.registry.VehicleCarouselSnippet = publicWidget.Widget.extend({
                         </div>`;
             }
             carouselInner.innerHTML = html;
+            // Reinicializamos el carrusel
+            $carousel.carousel({
+                interval: 5000,
+                ride: 'carousel'
+            });
         }).catch(err => {
             console.error("Error en RPC /vehicles/json:", err);
         });

@@ -1,33 +1,49 @@
-// SCSS para Single Vehicle Snippet
+// SCSS para el Single Vehicle Snippet
 .s_single_vehicle_snippet {
-    background-color: #f9f9f9;
-    padding: 30px 0;
+    background-color: #f8f8f8;
+    padding: 40px 0;
+    
     .container {
       .row {
         align-items: center;
+        
         .col-md-6 {
           &:first-child {
-            img {
-              max-width: 100%;
-              border-radius: 8px;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            figure {
+              margin: 0;
+              img.vehicle-image {
+                max-width: 100%;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                transition: transform 0.3s ease-in-out;
+                &:hover {
+                  transform: scale(1.02);
+                }
+              }
             }
           }
+          
           &:last-child {
-            h2 {
-              font-size: 2rem;
-              color: #333;
-              margin-bottom: 20px;
+            header {
+              h2 {
+                font-size: 2rem;
+                color: #333;
+                margin-bottom: 1rem;
+              }
             }
-            p {
-              font-size: 1.1rem;
-              color: #555;
+            article {
+              p {
+                font-size: 1.1rem;
+                color: #555;
+                line-height: 1.6;
+              }
             }
           }
         }
       }
     }
   }
+  
   
   // SCSS para Vehicle Carousel Snippet
   .s_vehicle_carousel {
@@ -64,3 +80,4 @@
     }
   }
   
+
