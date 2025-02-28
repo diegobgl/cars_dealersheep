@@ -3,7 +3,7 @@
     <!-- Template para la página de detalle de vehículo -->
     <template id="vehicle_detail_page" name="Detalle de Vehículo">
         <t t-call="website.layout">
-            <div class="container py-5">
+            <div class="container vehicle-detail-page py-5">
                 <div class="row">
                     <div class="col-md-6">
                         <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="img-fluid" alt="Imagen de vehículo"/>

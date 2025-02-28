@@ -27,6 +27,7 @@
             'cars_dealersheep/static/src/js/vehicle_carousel_snippet.js',
             'cars_dealersheep/static/src/scss/theme.scss',
             'cars_dealersheep/static/src/scss/vehicle_snippets.scss',
+            'cars_dealersheep/static/src/scss/vehicle_detail.scss',
             'cars_dealersheep/static/src/css/vehicle_snippet.css',
             ],
     },
