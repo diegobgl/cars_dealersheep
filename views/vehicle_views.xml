@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Vehículo">
                 <sheet>
-                <button string="data" name="fetch_vehicle_data" type="object" class="oe_highlight"/>
+                    <button string="data" name="fetch_vehicle_data" type="object" class="oe_highlight"/>
                     <group>
                         <field name="name"/>
                         <field name="vin"/>
@@ -19,19 +19,17 @@
                         <field name="transmission"/>
                         <field name="status"/>
                         <field name="image" widget="image"/>
-                        </group>
-                        <xpath expr="//notebook" position="inside">
+                    </group>
+                    <notebook>
                         <page string="Documentación">
                             <group>
-                                <group>
-                                    <field name="patente"/>
-                                    <field name="motor_number"/>
-                                    <field name="chasis_number"/>
-                                </group>
-                                <group>
-                                    <field name="matriculation_date"/>
-                                    <field name="review_date"/>
-                                </group>
+                                <field name="patente"/>
+                                <field name="motor_number"/>
+                                <field name="chasis_number"/>
+                            </group>
+                            <group>
+                                <field name="matriculation_date"/>
+                                <field name="review_date"/>
                             </group>
                             <group>
                                 <field name="registration_certificate" filename="registration_certificate_filename"/>
@@ -43,7 +41,7 @@
                                 <field name="description"/>
                             </group>
                         </page>
-                    </xpath>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -64,6 +62,7 @@
             </tree>
         </field>
     </record>
+    
     <record id="action_vehicle_list" model="ir.actions.act_window">
         <field name="name">Vehículos</field>
         <field name="res_model">vehicle.vehicle</field>
@@ -75,6 +74,4 @@
 
     <menuitem id="menu_vehicle_root" name="Gestión de Vehículos" sequence="10"/>
     <menuitem id="menu_vehicle" name="Vehículos" parent="menu_vehicle_root" action="action_vehicle_list"/>
-
 </odoo>
-
