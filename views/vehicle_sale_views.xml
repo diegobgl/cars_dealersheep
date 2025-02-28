@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista tipo Tree para Ventas de Vehículos -->
+    <record id="view_vehicle_sale_tree" model="ir.ui.view">
+        <field name="name">vehicle.sale.tree</field>
+        <field name="model">vehicle.sale</field>
+        <field name="arch" type="xml">
+            <tree string="Ventas de Vehículos">
+                <field name="buyer_id"/>
+                <field name="vehicle_id"/>
+                <field name="sale_date"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista tipo Formulario para Ventas de Vehículos -->
+    <record id="view_vehicle_sale_form" model="ir.ui.view">
+        <field name="name">vehicle.sale.form</field>
+        <field name="model">vehicle.sale</field>
+        <field name="arch" type="xml">
+            <form string="Venta de Vehículo">
+                <sheet>
+                    <group>
+                        <field name="buyer_id"/>
+                        <field name="seller_id"/>
+                        <field name="vehicle_id"/>
+                    </group>
+                    <group>
+                        <field name="sale_order_id"/>
+                        <field name="sale_date"/>
+                        <field name="price"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para abrir las ventas de vehículos -->
+    <record id="action_vehicle_sale" model="ir.actions.act_window">
+        <field name="name">Ventas de Vehículos</field>
+        <field name="res_model">vehicle.sale</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú: Se agrega un nuevo menú "Ventas" bajo el menú raíz "Gestión de Vehículos" -->
+    <menuitem id="menu_vehicle_sale" name="Ventas" parent="menu_vehicle_root" action="action_vehicle_sale" sequence="50"/>
+</odoo>
