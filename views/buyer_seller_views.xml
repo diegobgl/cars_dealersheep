@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vistas y Acción para Compradores de Vehículos -->
+    <record id="view_vehicle_buyer_tree" model="ir.ui.view">
+        <field name="name">vehicle.buyer.tree</field>
+        <field name="model">vehicle.buyer</field>
+        <field name="arch" type="xml">
+            <tree string="Compradores de Vehículos">
+                <field name="partner_id"/>
+                <field name="identification_number"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_vehicle_buyer_form" model="ir.ui.view">
+        <field name="name">vehicle.buyer.form</field>
+        <field name="model">vehicle.buyer</field>
+        <field name="arch" type="xml">
+            <form string="Comprador de Vehículos">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="identification_number"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_vehicle_buyer" model="ir.actions.act_window">
+        <field name="name">Compradores de Vehículos</field>
+        <field name="res_model">vehicle.buyer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    <!-- Vistas y Acción para Vendedores de Vehículos -->
+    <record id="view_vehicle_seller_tree" model="ir.ui.view">
+        <field name="name">vehicle.seller.tree</field>
+        <field name="model">vehicle.seller</field>
+        <field name="arch" type="xml">
+            <tree string="Vendedores de Vehículos">
+                <field name="partner_id"/>
+                <field name="dealer_code"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_vehicle_seller_form" model="ir.ui.view">
+        <field name="name">vehicle.seller.form</field>
+        <field name="model">vehicle.seller</field>
+        <field name="arch" type="xml">
+            <form string="Vendedor de Vehículos">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="dealer_code"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_vehicle_seller" model="ir.actions.act_window">
+        <field name="name">Vendedores de Vehículos</field>
+        <field name="res_model">vehicle.seller</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    <!-- Vistas y Acción para Compras de Vehículos -->
+    <record id="view_vehicle_purchase_tree" model="ir.ui.view">
+        <field name="name">vehicle.purchase.tree</field>
+        <field name="model">vehicle.purchase</field>
+        <field name="arch" type="xml">
+            <tree string="Compras de Vehículos">
+                <field name="buyer_id"/>
+                <field name="seller_id"/>
+                <field name="vehicle_id"/>
+                <field name="purchase_date"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_vehicle_purchase_form" model="ir.ui.view">
+        <field name="name">vehicle.purchase.form</field>
+        <field name="model">vehicle.purchase</field>
+        <field name="arch" type="xml">
+            <form string="Compra de Vehículo">
+                <sheet>
+                    <group>
+                        <field name="buyer_id"/>
+                        <field name="seller_id"/>
+                        <field name="vehicle_id"/>
+                        <field name="product_id"/>
+                    </group>
+                    <group>
+                        <field name="purchase_date"/>
+                        <field name="price"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="purchase_order_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_vehicle_purchase" model="ir.actions.act_window">
+        <field name="name">Compras de Vehículos</field>
+        <field name="res_model">vehicle.purchase</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    <!-- Menúes: Los nuevos menús se integran bajo el menú raíz "Gestión de Vehículos" -->
+    <!-- Se asume que ya existe: -->
+    <!-- <menuitem id="menu_vehicle_root" name="Gestión de Vehículos" sequence="10"/> -->
+    <!-- <menuitem id="menu_vehicle" name="Vehículos" parent="menu_vehicle_root" action="action_vehicle_list"/> -->
+    
+    <menuitem id="menu_vehicle_buyer" name="Compradores" parent="menu_vehicle_root" action="action_vehicle_buyer" sequence="20"/>
+    <menuitem id="menu_vehicle_seller" name="Vendedores" parent="menu_vehicle_root" action="action_vehicle_seller" sequence="30"/>
+    <menuitem id="menu_vehicle_purchase" name="Compras" parent="menu_vehicle_root" action="action_vehicle_purchase" sequence="40"/>
+    
+</odoo>

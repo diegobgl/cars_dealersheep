@@ -10,6 +10,7 @@
         'static/src/js/vehicle_snippet_options.xml',  
          'views/vehicle_detail.xml',
         'views/vehicle_views.xml',
+        'views/buyer_seller_views.xml',
 
 
     ],
