@@ -45,6 +45,8 @@ class Vehicle(models.Model):
     circulation_permit = fields.Binary(string="Permiso de Circulación")
     soat = fields.Binary(string="Certificado SOAP")
     certificate_of_history = fields.Binary(string="Certificado de Multas")
+    description = fields.Text(string="Descripción")
+
 
 
     def fetch_vehicle_data(self):
