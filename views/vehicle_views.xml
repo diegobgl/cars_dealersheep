@@ -41,6 +41,14 @@
                                 <field name="description"/>
                             </group>
                         </page>
+                        <page string="Galería">
+                                <field name="images" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="image" widget="image" options="{'size': [100,100]}"/>
+                                        <field name="caption"/>
+                                    </tree>
+                                </field>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

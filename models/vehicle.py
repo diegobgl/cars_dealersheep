@@ -46,6 +46,8 @@ class Vehicle(models.Model):
     soat = fields.Binary(string="Certificado SOAP")
     certificate_of_history = fields.Binary(string="Certificado de Multas")
     description = fields.Text(string="Descripción")
+    images = fields.One2many('vehicle.image', 'vehicle_id', string="Galería de Imágenes")
+
 
 
 
