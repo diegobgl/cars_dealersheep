@@ -8,9 +8,10 @@
         'views/snippets/website_snippet_templates.xml', 
         'views/snippets/vehicle_snippet.xml', 
         'static/src/js/vehicle_snippet_options.xml',  
-         'views/vehicle_detail.xml',
+        'views/vehicle_detail.xml',
         'views/vehicle_views.xml',
         'views/buyer_seller_views.xml',
+        'views/vehicle_sale_views.xml',
 
 
     ],
