@@ -16,7 +16,6 @@ class VehicleAd(models.Model):
     external_id = fields.Char(string="ID Externo", help="Identificador asignado por ChileAutos")
     notes = fields.Text(string="Observaciones")
 
-    @api.model
     def publish_to_chileautos(self, ad_id):
         ad = self.browse(ad_id)
         vehicle = ad.vehicle_id
