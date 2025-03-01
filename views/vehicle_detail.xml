@@ -18,6 +18,10 @@
                         <p t-if="vehicle.description"><strong>Descripción:</strong> <span t-esc="vehicle.description"/></p>
                     </div>
                 </div>
+                <!-- Zona editable para agregar más contenido -->
+                <div class="additional-content oe_structure" data-oe-drop="true">
+                    <p class="text-muted text-center">Arrastra aquí nuevos snippets para agregar contenido adicional.</p>
+                </div>
             </div>
         </t>
     </template>
