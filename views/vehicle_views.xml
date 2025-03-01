@@ -8,6 +8,7 @@
                 <sheet>
                     <button string="data" name="fetch_vehicle_data" type="object" class="oe_highlight"/>
                     <group>
+                        <field name="vehicle_type"/>
                         <field name="name"/>
                         <field name="vin"/>
                         <field name="brand"/>
@@ -60,6 +61,7 @@
         <field name="model">vehicle.vehicle</field>
         <field name="arch" type="xml">
             <tree string="Vehículos">
+                <field name="vehicle_type"/>
                 <field name="name"/>
                 <field name="vin"/>
                 <field name="brand"/>

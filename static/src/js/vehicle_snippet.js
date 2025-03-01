@@ -21,6 +21,7 @@ publicWidget.registry.VehicleSnippet = publicWidget.Widget.extend({
                                     <img src="/web/image/vehicle.vehicle/${vehicle.id}/image" class="card-img-top" alt="${vehicle.name || ''}">
                                     <div class="card-body">
                                         <h5 class="card-title">${vehicle.name || ''}</h5>
+                                        <p class="card-text">Tipo: ${vehicle.type || ''}</p>
                                         <p class="card-text">Marca: ${vehicle.brand || ''}</p>
                                         <p class="card-text">Modelo: ${vehicle.model || ''}</p>
                                         <p class="card-text">Año: ${vehicle.year || ''}</p>
