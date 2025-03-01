@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="external_snippets_custom" inherit_id="website.snippets" priority="15">
+    <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+      <t t-snippet="cars_dealersheep.cars_dealersheep_content_container_snippet"
+         name="Área de Contenido"
+         t-thumbnail="/cars_dealersheep/static/src/img/content_container_thumbnail.png"
+         data-preview="/cars_dealersheep/static/src/img/content_container_preview.png"
+         data-categories="featured"/>
+      <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_gallery_snippet"
+         name="Galería de Vehículos"
+         t-thumbnail="/cars_dealersheep/static/src/img/gallery_thumbnail.png"
+         data-preview="/cars_dealersheep/static/src/img/gallery_preview.png"
+         data-categories="featured"/>
+    </xpath>
+  </template>
+</odoo>

@@ -9,3 +9,5 @@ class VehicleDetailController(http.Controller):
         if not vehicle.exists():
             return request.render("website.404")  # O bien, una página de error personalizada
         return request.render("cars_dealersheep.vehicle_detail_page", {'vehicle': vehicle})
+    
+    
