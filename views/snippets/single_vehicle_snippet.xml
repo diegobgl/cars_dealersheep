@@ -12,6 +12,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card vehicle-card">
+                <!-- Imagen: Si existe 'vehicle', se muestra su imagen; si no, se muestra una imagen por defecto -->
                 <t t-if="vehicle">
                   <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="card-img-top" alt="Imagen de vehículo"/>
                 </t>
@@ -19,49 +20,58 @@
                   <img src="/cars_dealersheep/static/src/img/default_vehicle.png" class="card-img-top" alt="Imagen de vehículo por defecto"/>
                 </t>
                 <div class="card-body">
-                  <h5 class="card-title" t-if="vehicle" t-esc="vehicle.name" />
+                  <!-- Título: Nombre del vehículo -->
+                  <t t-if="vehicle">
+                    <h5 class="card-title" t-esc="vehicle.name"/>
+                  </t>
                   <t t-else="">
                     <h5 class="card-title">Vehículo Destacado</h5>
                   </t>
-                  <p class="card-text">
-                    <i class="fa fa-car"></i> 
-                    <strong>Marca:</strong>
-                    <t t-if="vehicle" t-esc="vehicle.brand"/>
+                  <!-- Marca -->
+                  <p class="card-text brand-field">
+                    <t t-if="vehicle">
+                      <i class="fa fa-car"></i> <strong>Marca:</strong> <span t-esc="vehicle.brand"/>
+                    </t>
                     <t t-else="">[Marca]</t>
                   </p>
-                  <p class="card-text">
-                    <i class="fa fa-cogs"></i> 
-                    <strong>Modelo:</strong>
-                    <t t-if="vehicle" t-esc="vehicle.model"/>
+                  <!-- Modelo -->
+                  <p class="card-text model-field">
+                    <t t-if="vehicle">
+                      <i class="fa fa-cogs"></i> <strong>Modelo:</strong> <span t-esc="vehicle.model"/>
+                    </t>
                     <t t-else="">[Modelo]</t>
                   </p>
-                  <p class="card-text">
-                    <i class="fa fa-calendar"></i> 
-                    <strong>Año:</strong>
-                    <t t-if="vehicle" t-esc="vehicle.year"/>
+                  <!-- Año -->
+                  <p class="card-text year-field">
+                    <t t-if="vehicle">
+                      <i class="fa fa-calendar"></i> <strong>Año:</strong> <span t-esc="vehicle.year"/>
+                    </t>
                     <t t-else="">[Año]</t>
                   </p>
-                  <p class="card-text">
-                    <i class="fa fa-money"></i> 
-                    <strong>Precio:</strong>
-                    <t t-if="vehicle" t-esc="vehicle.price"/> 
+                  <!-- Precio -->
+                  <p class="card-text price-field">
+                    <t t-if="vehicle">
+                      <i class="fa fa-money"></i> <strong>Precio:</strong> <span t-esc="vehicle.price"/> USD
+                    </t>
                     <t t-else="">[Precio] USD</t>
                   </p>
-                  <p class="card-text">
-                    <i class="fa fa-info-circle"></i> 
-                    <strong>Estado:</strong>
-                    <t t-if="vehicle" t-esc="vehicle.status"/>
+                  <!-- Estado -->
+                  <p class="card-text status-field">
+                    <t t-if="vehicle">
+                      <i class="fa fa-info-circle"></i> <strong>Estado:</strong> <span t-esc="vehicle.status"/>
+                    </t>
                     <t t-else="">[Estado]</t>
                   </p>
-                  <p class="card-text">
-                    <i class="fa fa-tag"></i> 
-                    <strong>Tipo:</strong>
-                    <t t-if="vehicle" t-esc="vehicle.vehicle_type"/>
+                  <!-- Tipo -->
+                  <p class="card-text type-field">
+                    <t t-if="vehicle">
+                      <i class="fa fa-tag"></i> <strong>Tipo:</strong> <span t-esc="vehicle.vehicle_type"/>
+                    </t>
                     <t t-else="">[Tipo]</t>
                   </p>
-                  <p class="card-text" t-if="vehicle and vehicle.description">
-                    <i class="fa fa-align-left"></i> 
-                    <strong>Descripción:</strong> <span t-esc="vehicle.description"/>
+                  <!-- Descripción (si existe) -->
+                  <p class="card-text description-field" t-if="vehicle and vehicle.description">
+                    <i class="fa fa-align-left"></i> <strong>Descripción:</strong> <span t-esc="vehicle.description"/>
                   </p>
                 </div>
               </div>
@@ -72,3 +82,4 @@
     </t>
   </template>
 </odoo>
+w
