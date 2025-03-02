@@ -19,6 +19,7 @@
                t-thumbnail="/cars_dealersheep/static/src/img/single_vehicle_thumbnail.png"
                data-preview="/cars_dealersheep/static/src/img/single_vehicle_preview.png"
                data-categories="featured"/>
+
             <t t-snippet="cars_dealersheep.cars_dealersheep_vehicle_carousel_snippet"
                name="Vehicle Carousel"
                t-thumbnail="/cars_dealersheep/static/src/img/vehicle_carousel_thumbnail.png"
@@ -27,5 +28,15 @@
         </xpath>
     </template>
 
+    <!-- Registro en la paleta para el Single Vehicle Snippet -->
+    <template id="external_snippets" inherit_id="website.snippets" priority="10">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+        <t t-snippet="cars_dealersheep.cars_dealersheep_single_vehicle_snippet"
+            name="Single Vehicle"
+            t-thumbnail="/cars_dealersheep/static/src/img/single_vehicle_thumbnail.png"
+            data-preview="/cars_dealersheep/static/src/img/single_vehicle_preview.png"
+            data-categories="featured"/>
+        </xpath>
+    </template>
 
 </odoo>
