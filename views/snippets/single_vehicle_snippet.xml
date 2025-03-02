@@ -12,17 +12,56 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card vehicle-card">
-                <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="card-img-top" alt="Imagen de vehículo"/>
+                <t t-if="vehicle">
+                  <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="card-img-top" alt="Imagen de vehículo"/>
+                </t>
+                <t t-else="">
+                  <img src="/cars_dealersheep/static/src/img/default_vehicle.png" class="card-img-top" alt="Imagen de vehículo por defecto"/>
+                </t>
                 <div class="card-body">
-                  <h5 class="card-title" t-esc="vehicle.name"/>
-                  <p class="card-text"><i class="fa fa-car"></i> <strong>Marca:</strong> <span t-esc="vehicle.brand"/></p>
-                  <p class="card-text"><i class="fa fa-cogs"></i> <strong>Modelo:</strong> <span t-esc="vehicle.model"/></p>
-                  <p class="card-text"><i class="fa fa-calendar"></i> <strong>Año:</strong> <span t-esc="vehicle.year"/></p>
-                  <p class="card-text"><i class="fa fa-money"></i> <strong>Precio:</strong> <span t-esc="vehicle.price"/> USD</p>
-                  <p class="card-text"><i class="fa fa-info-circle"></i> <strong>Estado:</strong> <span t-esc="vehicle.status"/></p>
-                  <p class="card-text"><i class="fa fa-tag"></i> <strong>Tipo:</strong> <span t-esc="vehicle.vehicle_type"/></p>
-                  <p class="card-text" t-if="vehicle.description">
-                    <i class="fa fa-align-left"></i> <strong>Descripción:</strong> <span t-esc="vehicle.description"/>
+                  <h5 class="card-title" t-if="vehicle" t-esc="vehicle.name" />
+                  <t t-else="">
+                    <h5 class="card-title">Vehículo Destacado</h5>
+                  </t>
+                  <p class="card-text">
+                    <i class="fa fa-car"></i> 
+                    <strong>Marca:</strong>
+                    <t t-if="vehicle" t-esc="vehicle.brand"/>
+                    <t t-else="">[Marca]</t>
+                  </p>
+                  <p class="card-text">
+                    <i class="fa fa-cogs"></i> 
+                    <strong>Modelo:</strong>
+                    <t t-if="vehicle" t-esc="vehicle.model"/>
+                    <t t-else="">[Modelo]</t>
+                  </p>
+                  <p class="card-text">
+                    <i class="fa fa-calendar"></i> 
+                    <strong>Año:</strong>
+                    <t t-if="vehicle" t-esc="vehicle.year"/>
+                    <t t-else="">[Año]</t>
+                  </p>
+                  <p class="card-text">
+                    <i class="fa fa-money"></i> 
+                    <strong>Precio:</strong>
+                    <t t-if="vehicle" t-esc="vehicle.price"/> 
+                    <t t-else="">[Precio] USD</t>
+                  </p>
+                  <p class="card-text">
+                    <i class="fa fa-info-circle"></i> 
+                    <strong>Estado:</strong>
+                    <t t-if="vehicle" t-esc="vehicle.status"/>
+                    <t t-else="">[Estado]</t>
+                  </p>
+                  <p class="card-text">
+                    <i class="fa fa-tag"></i> 
+                    <strong>Tipo:</strong>
+                    <t t-if="vehicle" t-esc="vehicle.vehicle_type"/>
+                    <t t-else="">[Tipo]</t>
+                  </p>
+                  <p class="card-text" t-if="vehicle and vehicle.description">
+                    <i class="fa fa-align-left"></i> 
+                    <strong>Descripción:</strong> <span t-esc="vehicle.description"/>
                   </p>
                 </div>
               </div>
