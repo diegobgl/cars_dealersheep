@@ -1,0 +1,109 @@
+// Variables
+$card-radius: 8px;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+$transition-duration: 0.3s;
+
+// Estilos generales del Home Page
+.home-page {
+  .search-bar {
+    input {
+      border-radius: $card-radius;
+      padding: 10px;
+      font-size: 1.1rem;
+      border: 1px solid #ddd;
+    }
+  }
+  
+  .filter-panel {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: $card-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .filter-group {
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #555;
+      }
+      select, input {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: $card-radius;
+        padding: 5px 8px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  .vehicle-list-container {
+    .vehicle-card {
+      border: none;
+      border-radius: $card-radius;
+      overflow: hidden;
+      box-shadow: $card-shadow;
+      transition: transform $transition-duration ease, box-shadow $transition-duration ease;
+      background-color: #fff;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      }
+      
+      .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      
+      .card-body {
+        padding: 15px;
+        
+        .card-title {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+          color: #333;
+        }
+        
+        .card-text {
+          font-size: 1rem;
+          color: #555;
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          
+          i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+            color: #007bff;
+          }
+          
+          strong {
+            margin-right: 5px;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+  
+  .additional-content {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    color: #777;
+  }
+  
+  .group-title {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+}

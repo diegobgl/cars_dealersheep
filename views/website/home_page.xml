@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="cars_dealersheep_home_page" name="Home Page Vehículos">
+    <t t-call="website.layout">
+      <div class="container home-page py-5">
+        <!-- Barra de búsqueda -->
+        <div class="search-bar mb-4">
+          <input type="text" id="vehicle_search_input" class="form-control" placeholder="Buscar vehículos..."/>
+        </div>
+        <div class="row">
+          <!-- Panel lateral de filtros -->
+          <div class="col-md-3 filter-panel">
+            <h4>Filtros</h4>
+            <div class="filter-group">
+              <label>Marca</label>
+              <select id="filter_brand" class="form-control">
+                <option value="">Todos</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Ford">Ford</option>
+              </select>
+            </div>
+            <div class="filter-group mt-3">
+              <label>Año</label>
+              <select id="filter_year" class="form-control">
+                <option value="">Todos</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+              </select>
+            </div>
+            <div class="filter-group mt-3">
+              <label>Tipo</label>
+              <select id="filter_type" class="form-control">
+                <option value="">Todos</option>
+                <option value="auto">Auto</option>
+                <option value="camioneta">Camioneta</option>
+                <option value="camion">Camión</option>
+                <option value="moto">Moto</option>
+              </select>
+            </div>
+          </div>
+          <!-- Área central para listado de vehículos -->
+          <div class="col-md-9 vehicle-list-container">
+            <div id="home_vehicle_list"></div>
+          </div>
+        </div>
+        <!-- Contenedor editable para nuevos bloques -->
+        <div class="additional-content oe_structure" data-oe-drop="true">
+          <p class="text-muted text-center">Arrastra aquí nuevos bloques para contenido adicional.</p>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>
