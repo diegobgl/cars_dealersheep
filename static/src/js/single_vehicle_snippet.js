@@ -3,7 +3,8 @@
 import publicWidget from 'web.public.widget';
 
 publicWidget.registry.SingleVehicleSnippet = publicWidget.Widget.extend({
-    selector: '.s_vehicle_snippet',
+    // Usamos un selector único para este widget
+    selector: '.s_single_vehicle_snippet',
     start() {
         const self = this;
         self._rpc({
