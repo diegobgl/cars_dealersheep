@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Template para la página de detalle de vehículo con estilo de card -->
+  <!-- Template para la página de detalle de vehículo con un estilo más cercano a auto360 -->
   <template id="vehicle_detail_page" name="Detalle de Vehículo">
     <t t-call="website.layout">
       <div class="container vehicle-detail-page py-5">
-        <div class="card vehicle-card shadow-sm">
-          <div class="row no-gutters">
-            <div class="col-md-6">
-              <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="img-fluid card-img" alt="Imagen de vehículo"/>
+        <div class="row">
+          <!-- Columna para la imagen principal -->
+          <div class="col-md-7">
+            <div class="vehicle-image-container">
+              <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" 
+                   class="img-fluid main-vehicle-image" 
+                   alt="Imagen de vehículo"/>
             </div>
-            <div class="col-md-6">
-              <div class="card-body">
-                <h1 class="card-title" t-esc="vehicle.name"/>
-                <p class="card-text"><i class="fa fa-car"></i> <strong>Marca:</strong> <span t-esc="vehicle.brand"/></p>
-                <p class="card-text"><i class="fa fa-cogs"></i> <strong>Modelo:</strong> <span t-esc="vehicle.model"/></p>
-                <p class="card-text"><i class="fa fa-calendar"></i> <strong>Año:</strong> <span t-esc="vehicle.year"/></p>
-                <p class="card-text"><i class="fa fa-money"></i> <strong>Precio:</strong> <span t-esc="vehicle.price"/> USD</p>
-                <p class="card-text"><i class="fa fa-info-circle"></i> <strong>Estado:</strong> <span t-esc="vehicle.status"/></p>
-                <p class="card-text"><i class="fa fa-tag"></i> <strong>Tipo:</strong> <span t-esc="vehicle.vehicle_type"/></p>
-                <p class="card-text" t-if="vehicle.description">
-                  <i class="fa fa-align-left"></i> <strong>Descripción:</strong> <span t-esc="vehicle.description"/>
+          </div>
+          <!-- Columna para la información del vehículo -->
+          <div class="col-md-5">
+            <div class="vehicle-info">
+              <h1 class="vehicle-name mb-3" t-esc="vehicle.name"/>
+              <p class="vehicle-price">
+                <t t-if="vehicle.price">
+                  $<t t-esc="vehicle.price"/> USD
+                </t>
+              </p>
+              
+              <div class="vehicle-specs">
+                <p>
+                  <i class="fa fa-car"></i>
+                  <strong>Marca:</strong>
+                  <span t-esc="vehicle.brand"/>
                 </p>
+                <p>
+                  <i class="fa fa-cogs"></i>
+                  <strong>Modelo:</strong>
+                  <span t-esc="vehicle.model"/>
+                </p>
+                <p>
+                  <i class="fa fa-calendar"></i>
+                  <strong>Año:</strong>
+                  <span t-esc="vehicle.year"/>
+                </p>
+                <p>
+                  <i class="fa fa-info-circle"></i>
+                  <strong>Estado:</strong>
+                  <span t-esc="vehicle.status"/>
+                </p>
+                <p>
+                  <i class="fa fa-tag"></i>
+                  <strong>Tipo:</strong>
+                  <span t-esc="vehicle.vehicle_type"/>
+                </p>
+              </div>
+              
+              <div class="vehicle-description mt-4" t-if="vehicle.description">
+                <h5>Descripción</h5>
+                <p t-esc="vehicle.description"/>
               </div>
             </div>
           </div>
