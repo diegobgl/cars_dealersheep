@@ -1,63 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Template para la página de detalle de vehículo con un estilo más cercano a auto360 -->
   <template id="vehicle_detail_page" name="Detalle de Vehículo">
     <t t-call="website.layout">
-      <div class="container vehicle-detail-page py-5">
+      <div class="vehicle-detail-page container py-5">
         <div class="row">
-          <!-- Columna para la imagen principal -->
+          <!-- Columna izquierda: Imagen principal y carrusel/galería -->
           <div class="col-md-7">
-            <div class="vehicle-image-container">
-              <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" 
-                   class="img-fluid main-vehicle-image" 
-                   alt="Imagen de vehículo"/>
+            <!-- Imagen principal -->
+            <div class="main-image-container mb-3">
+              <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'"
+                   class="img-fluid main-vehicle-image"
+                   alt="Imagen principal del vehículo"/>
             </div>
+            <!-- Carrusel / miniaturas (si tienes múltiples imágenes) -->
+            <t t-if="vehicle.images">
+              <div class="row thumb-gallery">
+                <t t-foreach="vehicle.images" t-as="img">
+                  <div class="col-3 mb-2">
+                    <img t-att-src="'/web/image/vehicle.image/' + str(img.id) + '/image'"
+                         class="img-fluid thumb-image"
+                         alt="Imagen adicional"/>
+                  </div>
+                </t>
+              </div>
+            </t>
           </div>
-          <!-- Columna para la información del vehículo -->
+
+          <!-- Columna derecha: información y especificaciones -->
           <div class="col-md-5">
             <div class="vehicle-info">
-              <h1 class="vehicle-name mb-3" t-esc="vehicle.name"/>
-              <p class="vehicle-price">
-                <t t-if="vehicle.price">
-                  $<t t-esc="vehicle.price"/> USD
-                </t>
-              </p>
-              
-              <div class="vehicle-specs">
-                <p>
-                  <i class="fa fa-car"></i>
-                  <strong>Marca:</strong>
-                  <span t-esc="vehicle.brand"/>
-                </p>
-                <p>
-                  <i class="fa fa-cogs"></i>
-                  <strong>Modelo:</strong>
-                  <span t-esc="vehicle.model"/>
-                </p>
-                <p>
-                  <i class="fa fa-calendar"></i>
-                  <strong>Año:</strong>
-                  <span t-esc="vehicle.year"/>
-                </p>
-                <p>
-                  <i class="fa fa-info-circle"></i>
-                  <strong>Estado:</strong>
-                  <span t-esc="vehicle.status"/>
-                </p>
-                <p>
-                  <i class="fa fa-tag"></i>
-                  <strong>Tipo:</strong>
-                  <span t-esc="vehicle.vehicle_type"/>
-                </p>
+              <!-- Nombre y año/kilometraje -->
+              <h1 class="vehicle-title" t-esc="vehicle.name"/>
+              <div class="vehicle-subinfo text-muted mb-2">
+                <t t-if="vehicle.year"><span t-esc="vehicle.year"/> | </t>
+                <t t-if="vehicle.mileage"><span t-esc="vehicle.mileage"/> kilómetros | </t>
+                <t t-if="vehicle.vehicle_type"><span t-esc="vehicle.vehicle_type"/></t>
               </div>
-              
-              <div class="vehicle-description mt-4" t-if="vehicle.description">
-                <h5>Descripción</h5>
-                <p t-esc="vehicle.description"/>
+              <!-- Precio grande -->
+              <div class="vehicle-price mb-4">
+                <t t-if="vehicle.price">
+                  $<t t-esc="vehicle.price"/>
+                </t>
+              </div>
+
+              <!-- Lista de especificaciones (combustible, transmisión, etc.) -->
+              <ul class="list-unstyled vehicle-specs">
+                <li t-if="vehicle.fuel_type"><strong>Combustible:</strong> <span t-esc="vehicle.fuel_type"/></li>
+                <li t-if="vehicle.transmission"><strong>Transmisión:</strong> <span t-esc="vehicle.transmission"/></li>
+                <li t-if="vehicle.status"><strong>Estado:</strong> <span t-esc="vehicle.status"/></li>
+                <li t-if="vehicle.brand"><strong>Marca:</strong> <span t-esc="vehicle.brand"/></li>
+                <li t-if="vehicle.model"><strong>Modelo:</strong> <span t-esc="vehicle.model"/></li>
+                <!-- Agrega más especificaciones según tu modelo -->
+              </ul>
+
+              <!-- Botones de acción -->
+              <div class="vehicle-actions mt-4">
+                <button class="btn btn-primary mr-2">Enviar mensaje</button>
+                <button class="btn btn-success">Contactar por WhatsApp</button>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Descripción completa -->
+        <t t-if="vehicle.description">
+          <div class="row mt-5">
+            <div class="col-12">
+              <h4>Descripción</h4>
+              <p t-esc="vehicle.description"/>
+            </div>
+          </div>
+        </t>
       </div>
     </t>
   </template>

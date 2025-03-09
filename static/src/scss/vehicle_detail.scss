@@ -1,74 +1,82 @@
 .vehicle-detail-page {
   .row {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
   }
 
-  .vehicle-image-container {
+  /* Imagen principal */
+  .main-image-container {
     background-color: #f7f7f7;
     border-radius: 8px;
     overflow: hidden;
     padding: 10px;
-
     .main-vehicle-image {
       width: 100%;
-      border-radius: 8px;
       object-fit: cover;
+      border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
   }
 
+  /* Miniaturas (thumb-gallery) */
+  .thumb-gallery {
+    .thumb-image {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  /* Columna derecha */
   .vehicle-info {
-    padding: 20px;
-    
-    .vehicle-name {
-      font-size: 1.75rem;
+    padding: 0 15px;
+    .vehicle-title {
+      font-size: 1.8rem;
       font-weight: 700;
       color: #333;
+      margin-bottom: 5px;
     }
-
+    .vehicle-subinfo {
+      font-size: 1rem;
+      color: #666;
+    }
     .vehicle-price {
-      font-size: 1.4rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: #e74c3c; // un color rojo/contrastante
-      margin-bottom: 15px;
+      color: #229954; /* un verde, ajusta a tu gusto */
     }
-
     .vehicle-specs {
-      p {
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
-        color: #555;
+      margin: 20px 0;
+      li {
         margin-bottom: 8px;
-
-        i {
-          margin-right: 6px;
-          color: #007bff;
-        }
         strong {
-          margin-right: 4px;
           color: #333;
+          margin-right: 5px;
         }
       }
     }
-
-    .vehicle-description {
-      background-color: #f9f9f9;
-      border-radius: 6px;
-      padding: 15px;
-      margin-top: 10px;
-
-      h5 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        color: #333;
-      }
-      p {
-        font-size: 0.95rem;
-        color: #555;
-        line-height: 1.5;
+    .vehicle-actions {
+      button {
+        min-width: 150px;
+        margin-right: 10px;
       }
     }
+  }
+
+  /* Descripción */
+  h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
   }
 }
