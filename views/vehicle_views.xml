@@ -6,51 +6,59 @@
         <field name="arch" type="xml">
             <form string="Vehículo">
                 <sheet>
+                    <field name="status" widget="statusbar" statusbar_visible="Disponible,Reservado,Vendido" readonly="1" />
                     <button string="data" name="fetch_vehicle_data" type="object" class="oe_highlight"/>
                     <group>
-                        <field name="vehicle_type" widget="selection"/>
-                        <field name="name"/>
-                        <field name="vin"/>
-                        <field name="brand"/>
-                        <field name="model"/>
-                        <field name="year"/>
-                        <field name="price"/>
-                        <field name="mileage"/>
-                        <field name="fuel_type"/>
-                        <field name="transmission"/>
-                        <field name="status"/>
-                        <field name="image" widget="image"/>
+                        <group>
+                            <field name="vehicle_type" widget="selection"/>
+                            <field name="name"/>
+                            <field name="vin"/>
+                            <field name="brand"/>
+                            <field name="model"/>
+                            <field name="year"/>
+                        </group>
+                        <group>
+                            <field name="image" widget="image"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                            <field name="mileage"/>
+                            <field name="fuel_type"/>
+                            <field name="transmission"/>
+                            <field name="status"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Documentación">
+                                <group>
+                                    <field name="patente"/>
+                                    <field name="motor_number"/>
+                                    <field name="chasis_number"/>
+                                </group>
+                                <group>
+                                    <field name="matriculation_date"/>
+                                    <field name="review_date"/>
+                                </group>
+                                <group>
+                                    <field name="registration_certificate" filename="registration_certificate_filename"/>
+                                    <field name="circulation_permit" filename="circulation_permit_filename"/>
+                                    <field name="soat" filename="soat_filename"/>
+                                    <field name="certificate_of_history" filename="certificate_of_history_filename"/>
+                                </group>
+                                <group>
+                                    <field name="description"/>
+                                </group>
+                            </page>
+                            <page string="Galería">
+                                    <field name="images" widget="one2many_list">
+                                        <tree editable="bottom">
+                                            <field name="image" widget="image" options="{'size': [100,100]}"/>
+                                            <field name="caption"/>
+                                        </tree>
+                                    </field>
+                            </page>
+                        </notebook>
                     </group>
-                    <notebook>
-                        <page string="Documentación">
-                            <group>
-                                <field name="patente"/>
-                                <field name="motor_number"/>
-                                <field name="chasis_number"/>
-                            </group>
-                            <group>
-                                <field name="matriculation_date"/>
-                                <field name="review_date"/>
-                            </group>
-                            <group>
-                                <field name="registration_certificate" filename="registration_certificate_filename"/>
-                                <field name="circulation_permit" filename="circulation_permit_filename"/>
-                                <field name="soat" filename="soat_filename"/>
-                                <field name="certificate_of_history" filename="certificate_of_history_filename"/>
-                            </group>
-                            <group>
-                                <field name="description"/>
-                            </group>
-                        </page>
-                        <page string="Galería">
-                                <field name="images" widget="one2many_list">
-                                    <tree editable="bottom">
-                                        <field name="image" widget="image" options="{'size': [100,100]}"/>
-                                        <field name="caption"/>
-                                    </tree>
-                                </field>
-                        </page>
-                    </notebook>
                 </sheet>
             </form>
         </field>

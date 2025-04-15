@@ -10,8 +10,6 @@
         </xpath>
     </template>
 
-
-
     <template id="external_snippets_custom" inherit_id="website.snippets" priority="15">
         <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
             <t t-snippet="cars_dealersheep.cars_dealersheep_single_vehicle_snippet"
