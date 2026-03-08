@@ -13,9 +13,10 @@ publicWidget.registry.SingleVehicleSnippet = publicWidget.Widget.extend({
     start() {
         return this._rpc({
             route: '/vehicles/json',
-            params: {},
-        }).then((vehicles) => {
-            const vehicle = vehicles && vehicles.length ? vehicles[0] : null;
+            params: { status: 'available', limit: 1, offset: 0 },
+        }).then((result) => {
+            const vehicles = (result && result.vehicles) ? result.vehicles : (result || []);
+            const vehicle = vehicles.length ? vehicles[0] : null;
             if (!vehicle) {
                 this.$el.find('.description-field span').text('No hay vehículos destacados para mostrar.');
                 return;

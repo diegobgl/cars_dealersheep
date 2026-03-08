@@ -48,11 +48,13 @@ publicWidget.registry.HomePageVehicles = publicWidget.Widget.extend({
 
     start() {
         this.vehicles = [];
+        this.allVehicles = [];
         return this._rpc({
             route: '/vehicles/json',
-            params: {},
-        }).then((vehicles) => {
-            this.vehicles = vehicles || [];
+            params: { status: 'available', limit: 200, offset: 0 },
+        }).then((result) => {
+            this.allVehicles = (result && result.vehicles) ? result.vehicles : (result || []);
+            this.vehicles = this.allVehicles;
             this._populateFilters();
             this._render();
         }).catch((err) => {

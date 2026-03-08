@@ -31,9 +31,32 @@ class VehicleWebsiteController(http.Controller):
         }
 
     @http.route('/vehicles/json', type='json', auth='public', website=True)
-    def get_vehicles(self):
-        vehicles = request.env['vehicle.vehicle'].sudo().search([], order='create_date desc')
-        return [self._serialize_vehicle(vehicle) for vehicle in vehicles]
+    def get_vehicles(self, limit=20, offset=0, status='available', brand=None, year=None, vehicle_type=None, search=None, **kwargs):
+        domain = []
+        if status:
+            domain.append(('status', '=', status))
+        if brand:
+            domain.append(('brand', '=', brand))
+        if year:
+            domain.append(('year', '=', int(year)))
+        if vehicle_type:
+            domain.append(('vehicle_type', '=', vehicle_type))
+        if search:
+            domain += ['|', '|', '|',
+                ('name', 'ilike', search),
+                ('brand', 'ilike', search),
+                ('model', 'ilike', search),
+                ('patente', 'ilike', search),
+            ]
+        Vehicle = request.env['vehicle.vehicle'].sudo()
+        total = Vehicle.search_count(domain)
+        vehicles = Vehicle.search(domain, order='create_date desc', limit=int(limit), offset=int(offset))
+        return {
+            'vehicles': [self._serialize_vehicle(v) for v in vehicles],
+            'total': total,
+            'limit': int(limit),
+            'offset': int(offset),
+        }
 
     @http.route('/vehicle/gallery/json', type='json', auth='public', website=True)
     def vehicle_gallery(self, vehicle_id=None, **kwargs):

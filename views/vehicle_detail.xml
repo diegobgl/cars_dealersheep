@@ -56,7 +56,10 @@
 
               <div class="vehicle-actions mt-4">
                 <a href="/contactus" class="btn btn-dark mr-2">Solicitar contacto</a>
-                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success">WhatsApp</a>
+                <t t-if="whatsapp_number">
+                  <a t-attf-href="https://wa.me/#{whatsapp_number}?text=Hola,%20me%20interesa%20el%20vehículo%20#{vehicle.name}"
+                     target="_blank" rel="noopener noreferrer" class="btn btn-outline-success">WhatsApp</a>
+                </t>
               </div>
             </div>
           </div>

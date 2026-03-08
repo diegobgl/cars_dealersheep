@@ -48,8 +48,9 @@ publicWidget.registry.VehicleSnippet = publicWidget.Widget.extend({
     start() {
         return this._rpc({
             route: '/vehicles/json',
-            params: {},
-        }).then((vehicles) => {
+            params: { status: 'available', limit: 50, offset: 0 },
+        }).then((result) => {
+            const vehicles = (result && result.vehicles) ? result.vehicles : (result || []);
             const html = vehicles.length
                 ? vehicles.map(renderVehicleCard).join('')
                 : '<div class="col-12"><div class="vehicle-empty-state"><p>No hay vehículos disponibles.</p></div></div>';

@@ -23,8 +23,9 @@ publicWidget.registry.VehicleCarouselSnippet = publicWidget.Widget.extend({
 
         return this._rpc({
             route: '/vehicles/json',
-            params: {},
-        }).then((vehicles) => {
+            params: { status: 'available', limit: 10, offset: 0 },
+        }).then((result) => {
+            const vehicles = (result && result.vehicles) ? result.vehicles : (result || []);
             const html = vehicles.length ? vehicles.map((vehicle, index) => `
                 <div class="carousel-item${index === 0 ? ' active' : ''}">
                     <a href="${escapeHtml(vehicle.website_url || '#')}" class="vehicle-carousel-link">
