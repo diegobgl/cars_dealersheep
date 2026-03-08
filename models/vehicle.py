@@ -5,9 +5,12 @@ class Vehicle(models.Model):
     _name = 'vehicle.vehicle'
     _description = 'Vehicle'
     _inherit = ['mail.thread', 'mail.activity.mixin']  # Para notificaciones y actividades
+    _sql_constraints = [
+        ('vehicle_vin_unique', 'unique(vin)', 'El VIN debe ser único.'),
+    ]
 
     name = fields.Char(string="Nombre del Vehículo", required=True, tracking=True)
-    vin = fields.Char(string="VIN", required=True, unique=True, tracking=True)
+    vin = fields.Char(string="VIN", required=True, tracking=True)
     brand = fields.Char(string="Marca", tracking=True)
     model = fields.Char(string="Modelo", tracking=True)
     year = fields.Integer(string="Año", tracking=True)
@@ -55,6 +58,29 @@ class Vehicle(models.Model):
     ], string="Tipo de Vehículo", tracking=True)
     ad_ids = fields.One2many('vehicle.ad', 'vehicle_id', string="Avisos Publicados")
 
+    def _normalize_fuel_type(self, value):
+        normalized = (value or '').strip().lower()
+        mapping = {
+            'gasoline': 'gasoline',
+            'gas': 'gasoline',
+            'diesel': 'diesel',
+            'electric': 'electric',
+            'hybrid': 'hybrid',
+            'hybrid electric': 'hybrid',
+            'plug-in hybrid': 'hybrid',
+        }
+        return mapping.get(normalized)
+
+    def _normalize_transmission(self, value):
+        normalized = (value or '').strip().lower()
+        mapping = {
+            'manual': 'manual',
+            'automatic': 'automatic',
+            'auto': 'automatic',
+            'continuously variable transmission (cvt)': 'automatic',
+        }
+        return mapping.get(normalized)
+
 
     def fetch_vehicle_data(self):
         """ Consulta la API de la NHTSA con el VIN y completa la información del vehículo. """
@@ -67,8 +93,12 @@ class Vehicle(models.Model):
             self.brand = next((item['Value'] for item in results if item['Variable'] == 'Make'), '')
             self.model = next((item['Value'] for item in results if item['Variable'] == 'Model'), '')
             self.year = next((item['Value'] for item in results if item['Variable'] == 'Model Year'), 0)
-            self.fuel_type = next((item['Value'] for item in results if item['Variable'] == 'Fuel Type - Primary'), '')
-            self.transmission = next((item['Value'] for item in results if item['Variable'] == 'Transmission Style'), '')
+            self.fuel_type = self._normalize_fuel_type(
+                next((item['Value'] for item in results if item['Variable'] == 'Fuel Type - Primary'), '')
+            )
+            self.transmission = self._normalize_transmission(
+                next((item['Value'] for item in results if item['Variable'] == 'Transmission Style'), '')
+            )
         else:
             raise ValueError("No se pudo obtener información del VIN")
 

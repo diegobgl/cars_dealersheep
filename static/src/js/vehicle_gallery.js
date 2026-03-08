@@ -2,40 +2,40 @@
 
 import publicWidget from 'web.public.widget';
 
+function escapeHtml(value) {
+    return $('<div/>').text(value || '').html();
+}
+
 publicWidget.registry.VehicleGallerySnippet = publicWidget.Widget.extend({
     selector: '.s_vehicle_gallery',
     start() {
-        console.log("Vehicle Gallery Snippet Cargado");
         const $galleryContainer = this.$el.find('.vehicle-gallery');
-        // Obtenemos el vehicle_id del atributo data-vehicle-id en el contenedor
-        const vehicleId = $galleryContainer.data('vehicle-id');
-        if (!vehicleId) {
-            console.error("No se encontró el vehicle_id en el contenedor de galería");
-            return;
-        }
-        // Llamada RPC al endpoint para obtener las imágenes de la galería
-        this._rpc({
+        const vehicleId = $galleryContainer.data('vehicle-id') || this._vehicleIdFromPath();
+
+        return this._rpc({
             route: '/vehicle/gallery/json',
-            params: { vehicle_id: vehicleId },
-        }).then(images => {
-            let html = '';
-            if (images && images.length > 0) {
-                images.forEach(image => {
-                    // Usamos la ruta web/image para cada imagen del modelo vehicle.image
-                    html += `<div class="col-md-3 mb-3">
-                                <img src="/web/image/vehicle.image/${image.id}/image" 
-                                     class="img-fluid rounded shadow-sm" 
-                                     alt="${image.caption || 'Imagen del vehículo'}"/>
-                             </div>`;
-                });
-            } else {
-                html = '<div class="col-12 text-center py-5"><p>No hay imágenes disponibles.</p></div>';
-            }
+            params: vehicleId ? { vehicle_id: vehicleId } : {},
+        }).then((images) => {
+            const html = images && images.length ? images.map((image) => `
+                <div class="col-lg-3 col-md-4 col-6 mb-3">
+                    <figure class="vehicle-gallery-item">
+                        <img src="/web/image/vehicle.image/${image.id}/image"
+                             class="img-fluid rounded shadow-sm"
+                             alt="${escapeHtml(image.caption || 'Imagen del vehículo')}"/>
+                        <figcaption>${escapeHtml(image.caption || 'Imagen de la publicación')}</figcaption>
+                    </figure>
+                </div>
+            `).join('') : '<div class="col-12"><div class="vehicle-empty-state"><p>No hay imágenes disponibles.</p></div></div>';
             $galleryContainer.html(html);
-        }).catch(err => {
-            console.error("Error al cargar la galería de imágenes:", err);
-            $galleryContainer.html('<div class="col-12 text-center py-5"><p>Error al cargar la galería.</p></div>');
+        }).catch((err) => {
+            console.error('Error al cargar la galería de imágenes:', err);
+            $galleryContainer.html('<div class="col-12"><div class="vehicle-empty-state"><p>Error al cargar la galería.</p></div></div>');
         });
+    },
+
+    _vehicleIdFromPath() {
+        const match = window.location.pathname.match(/\/vehicle\/(\d+)/);
+        return match ? parseInt(match[1], 10) : null;
     },
 });
 

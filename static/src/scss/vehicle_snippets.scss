@@ -1,83 +1,240 @@
-// SCSS para el Single Vehicle Snippet
-.s_single_vehicle_snippet {
-    background-color: #f8f8f8;
-    padding: 40px 0;
-    
-    .container {
-      .row {
-        align-items: center;
-        
-        .col-md-6 {
-          &:first-child {
-            figure {
-              margin: 0;
-              img.vehicle-image {
-                max-width: 100%;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-                transition: transform 0.3s ease-in-out;
-                &:hover {
-                  transform: scale(1.02);
-                }
-              }
-            }
-          }
-          
-          &:last-child {
-            header {
-              h2 {
-                font-size: 2rem;
-                color: #333;
-                margin-bottom: 1rem;
-              }
-            }
-            article {
-              p {
-                font-size: 1.1rem;
-                color: #555;
-                line-height: 1.6;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  
-  // SCSS para Vehicle Carousel Snippet
-  .s_vehicle_carousel {
-    background-color: #fff;
-    padding: 40px 0;
-    h2 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-      color: #333;
-    }
-    .carousel-inner {
-      .carousel-item {
-        text-align: center;
-        img {
-          max-height: 400px;
-          object-fit: cover;
-          margin: 0 auto;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .carousel-caption {
-          background: rgba(0, 0, 0, 0.5);
-          padding: 10px;
-          border-radius: 4px;
-          h5 {
-            font-size: 1.5rem;
-            margin: 0;
-          }
-          p {
-            font-size: 1rem;
-          }
-        }
-      }
-    }
-  }
-  
+.s_vehicle_snippet,
+.s_single_vehicle_snippet,
+.s_vehicle_carousel,
+.s_vehicle_gallery,
+.s_content_container {
+  --vehicle-accent: #bb3e03;
+  --vehicle-accent-soft: #ffe9de;
+  --vehicle-ink: #1f2937;
+  --vehicle-muted: #6b7280;
+  --vehicle-surface: #fffaf5;
+  padding: 72px 0;
+  background:
+    radial-gradient(circle at top left, rgba(251, 146, 60, 0.16), transparent 32%),
+    linear-gradient(180deg, #fffdfb 0%, #fff7ef 100%);
 
+  .vehicle-snippet-heading {
+    max-width: 720px;
+    margin: 0 auto 32px;
+
+    h2 {
+      color: var(--vehicle-ink);
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: var(--vehicle-muted);
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}
+
+.vehicle-snippet-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: var(--vehicle-accent-soft);
+  color: var(--vehicle-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.vehicle-card {
+  border: 1px solid rgba(187, 62, 3, 0.12);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.14);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    color: var(--vehicle-ink);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .card-text {
+    color: var(--vehicle-muted);
+    margin-bottom: 0.55rem;
+  }
+}
+
+.vehicle-card-featured {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.05fr) minmax(0, 1fr);
+  min-height: 420px;
+
+  .card-img-top {
+    height: 100%;
+    min-height: 320px;
+  }
+
+  .vehicle-detail-link {
+    margin-top: 1rem;
+    border-radius: 999px;
+    padding-inline: 1.25rem;
+  }
+}
+
+.vehicle-image-wrap {
+  position: relative;
+}
+
+.vehicle-card,
+.s_vehicle_carousel {
+  .card-img-top,
+  .carousel-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #f4f4f5, #e4e4e7);
+  }
+}
+
+.vehicle-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+
+  span {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--vehicle-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+.vehicle-price {
+  color: #0f766e !important;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.vehicle-subtitle,
+.vehicle-type {
+  color: var(--vehicle-ink) !important;
+}
+
+.vehicle-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vehicle-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.82);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.vehicle-empty-state {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  border: 1px dashed rgba(107, 114, 128, 0.35);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 2rem;
+  color: var(--vehicle-muted);
+}
+
+.s_vehicle_gallery {
+  .vehicle-gallery-item {
+    margin: 0;
+    padding: 0.5rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+
+    img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    figcaption {
+      padding: 0.85rem 0.25rem 0.15rem;
+      color: var(--vehicle-muted);
+      font-size: 0.92rem;
+    }
+  }
+}
+
+.s_vehicle_carousel {
+  .carousel {
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.16);
+  }
+
+  .carousel-item img {
+    height: 460px;
+  }
+
+  .carousel-caption {
+    left: 5%;
+    right: 5%;
+    bottom: 2rem;
+    text-align: left;
+    padding: 1.5rem;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.28), rgba(17, 24, 39, 0.9));
+
+    h5 {
+      font-size: clamp(1.75rem, 2vw, 2.3rem);
+      margin: 0.75rem 0 0.25rem;
+    }
+
+    p,
+    strong {
+      margin: 0;
+      color: #f9fafb;
+    }
+
+    strong {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .vehicle-card-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .s_vehicle_carousel .carousel-item img {
+    height: 320px;
+  }
+}

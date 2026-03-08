@@ -2,43 +2,56 @@
 
 import publicWidget from 'web.public.widget';
 
+const currencyFormatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    maximumFractionDigits: 0,
+});
+
+function escapeHtml(value) {
+    return $('<div/>').text(value || '').html();
+}
+
 publicWidget.registry.VehicleCarouselSnippet = publicWidget.Widget.extend({
     selector: '.s_vehicle_carousel',
     start() {
-        console.log("Vehicle Carousel Snippet Cargado");
-        const $carousel = this.$el.find('#vehicleCarousel');
-        const carouselInner = this.el.querySelector('.carousel-inner');
-        if (!carouselInner) return;
-        this._rpc({
+        const carouselId = `vehicleCarousel-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+        const carouselEl = this.el.querySelector('#vehicleCarousel');
+        const controls = this.el.querySelectorAll('.carousel-control-prev, .carousel-control-next');
+        carouselEl.id = carouselId;
+        controls.forEach((control) => control.setAttribute('href', `#${carouselId}`));
+
+        return this._rpc({
             route: '/vehicles/json',
             params: {},
-        }).then(vehicles => {
-            let html = '';
-            if (vehicles.length > 0) {
-                vehicles.forEach((vehicle, index) => {
-                    html += `<div class="carousel-item${index === 0 ? ' active' : ''}">
-                                <img class="d-block w-100" src="/web/image/vehicle.vehicle/${vehicle.id}/image" alt="${vehicle.name || ''}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>${vehicle.name}</h5>
-                                    <p>Modelo: ${vehicle.model || ''} - Año: ${vehicle.year || ''}</p>
-                                </div>
-                             </div>`;
+        }).then((vehicles) => {
+            const html = vehicles.length ? vehicles.map((vehicle, index) => `
+                <div class="carousel-item${index === 0 ? ' active' : ''}">
+                    <a href="${escapeHtml(vehicle.website_url || '#')}" class="vehicle-carousel-link">
+                        <img class="d-block w-100" src="${escapeHtml(vehicle.image_url)}" alt="${escapeHtml(vehicle.name || 'Vehículo')}">
+                        <div class="carousel-caption">
+                            <span class="vehicle-badge">${escapeHtml(vehicle.status_label || vehicle.status || '')}</span>
+                            <h5>${escapeHtml(vehicle.name || '')}</h5>
+                            <p>${escapeHtml(vehicle.brand || '')} ${escapeHtml(vehicle.model || '')}</p>
+                            <strong>${currencyFormatter.format(vehicle.price || 0)}</strong>
+                        </div>
+                    </a>
+                </div>
+            `).join('') : `
+                <div class="carousel-item active">
+                    <div class="vehicle-empty-state">
+                        <p>No hay vehículos disponibles.</p>
+                    </div>
+                </div>
+            `;
+            this.el.querySelector('.carousel-inner').innerHTML = html;
+            if (window.bootstrap && window.bootstrap.Carousel) {
+                window.bootstrap.Carousel.getOrCreateInstance(carouselEl, {
+                    interval: 5000,
                 });
-            } else {
-                html = `<div class="carousel-item active">
-                            <div class="text-center p-5">
-                              <p>No hay vehículos disponibles.</p>
-                            </div>
-                        </div>`;
             }
-            carouselInner.innerHTML = html;
-            // Reinicializamos el carrusel
-            $carousel.carousel({
-                interval: 5000,
-                ride: 'carousel'
-            });
-        }).catch(err => {
-            console.error("Error en RPC /vehicles/json:", err);
+        }).catch((err) => {
+            console.error('Error en RPC /vehicles/json:', err);
         });
     },
 });

@@ -2,34 +2,36 @@
 
 import publicWidget from 'web.public.widget';
 
+const currencyFormatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    maximumFractionDigits: 0,
+});
+
 publicWidget.registry.SingleVehicleSnippet = publicWidget.Widget.extend({
-    // Usamos un selector único para este widget
     selector: '.s_single_vehicle_snippet',
     start() {
-        const self = this;
-        self._rpc({
+        return this._rpc({
             route: '/vehicles/json',
             params: {},
-        }).then(function(vehicles) {
-            if (vehicles && vehicles.length > 0) {
-                const vehicle = vehicles[0];  // Mostramos el primer vehículo
-                // Actualiza la imagen de la card
-                self.$el.find('img.card-img-top').attr('src', '/web/image/vehicle.vehicle/' + vehicle.id + '/image');
-                // Actualiza el título (nombre)
-                self.$el.find('.card-title').text(vehicle.name);
-                // Actualiza cada campo con icono:
-                self.$el.find('.brand-field').html('<i class="fa fa-car"></i> <strong>Marca:</strong> ' + (vehicle.brand || ''));
-                self.$el.find('.model-field').html('<i class="fa fa-cogs"></i> <strong>Modelo:</strong> ' + (vehicle.model || ''));
-                self.$el.find('.year-field').html('<i class="fa fa-calendar"></i> <strong>Año:</strong> ' + (vehicle.year || ''));
-                self.$el.find('.price-field').html('<i class="fa fa-money"></i> <strong>Precio:</strong> ' + (vehicle.price || '') + ' USD');
-                self.$el.find('.status-field').html('<i class="fa fa-info-circle"></i> <strong>Estado:</strong> ' + (vehicle.status || ''));
-                self.$el.find('.type-field').html('<i class="fa fa-tag"></i> <strong>Tipo:</strong> ' + (vehicle.vehicle_type || ''));
-                if (vehicle.description) {
-                    self.$el.find('.description-field').html('<i class="fa fa-align-left"></i> <strong>Descripción:</strong> ' + vehicle.description);
-                }
+        }).then((vehicles) => {
+            const vehicle = vehicles && vehicles.length ? vehicles[0] : null;
+            if (!vehicle) {
+                this.$el.find('.description-field span').text('No hay vehículos destacados para mostrar.');
+                return;
             }
-        }).catch(function(err) {
-            console.error("Error RPC /vehicles/json:", err);
+            this.$el.find('img.card-img-top').attr('src', vehicle.image_url);
+            this.$el.find('.card-title').text(vehicle.name || 'Vehículo destacado');
+            this.$el.find('.brand-field span').text(vehicle.brand || '-');
+            this.$el.find('.model-field span').text(vehicle.model || '-');
+            this.$el.find('.year-field span').text(vehicle.year || '-');
+            this.$el.find('.price-field span').text(currencyFormatter.format(vehicle.price || 0));
+            this.$el.find('.status-field span').text(vehicle.status_label || vehicle.status || '-');
+            this.$el.find('.type-field span').text(vehicle.vehicle_type_label || vehicle.vehicle_type || '-');
+            this.$el.find('.description-field span').text(vehicle.description || 'Sin descripción disponible.');
+            this.$el.find('.vehicle-detail-link').attr('href', vehicle.website_url || '#');
+        }).catch((err) => {
+            console.error('Error RPC /vehicles/json:', err);
         });
     },
 });

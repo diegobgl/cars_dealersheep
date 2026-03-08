@@ -1,109 +1,99 @@
-// Variables
-$card-radius: 8px;
-$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-$transition-duration: 0.3s;
-
-// Estilos generales del Home Page
 .home-page {
-  .search-bar {
-    input {
-      border-radius: $card-radius;
-      padding: 10px;
-      font-size: 1.1rem;
-      border: 1px solid #ddd;
+  --home-ink: #111827;
+  --home-muted: #6b7280;
+  --home-accent: #bb3e03;
+  --home-surface: #fffaf5;
+
+  .home-hero {
+    padding: clamp(2rem, 4vw, 4rem);
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at top right, rgba(251, 146, 60, 0.24), transparent 26%),
+      linear-gradient(135deg, #fff8f1 0%, #fffdfb 100%);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+
+    h1 {
+      color: var(--home-ink);
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 800;
+      line-height: 0.98;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--home-muted);
+      font-size: 1.08rem;
+      line-height: 1.7;
+      max-width: 54ch;
+      margin: 0;
     }
   }
-  
+
+  .search-bar input {
+    min-height: 64px;
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    border-radius: 999px;
+    padding: 0 1.4rem;
+    font-size: 1rem;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+  }
+
   .filter-panel {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: $card-radius;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    position: sticky;
+    top: 2rem;
+    padding: 1.5rem;
+    border-radius: 28px;
+    background: var(--home-surface);
+    border: 1px solid rgba(187, 62, 3, 0.1);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+
     h4 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: #333;
-    }
-    .filter-group {
-      label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-        color: #555;
-      }
-      select, input {
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: $card-radius;
-        padding: 5px 8px;
-        margin-bottom: 10px;
-      }
+      color: var(--home-ink);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
     }
   }
-  
+
+  .filter-group {
+    margin-bottom: 1rem;
+
+    label {
+      display: block;
+      color: var(--home-ink);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    select,
+    input {
+      min-height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      box-shadow: none;
+    }
+  }
+
+  .filter-summary {
+    margin-top: 1rem;
+  }
+
   .vehicle-list-container {
-    .vehicle-card {
-      border: none;
-      border-radius: $card-radius;
-      overflow: hidden;
-      box-shadow: $card-shadow;
-      transition: transform $transition-duration ease, box-shadow $transition-duration ease;
-      background-color: #fff;
-      
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-      }
-      
-      .card-img-top {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      
-      .card-body {
-        padding: 15px;
-        
-        .card-title {
-          font-size: 1.5rem;
-          margin-bottom: 10px;
-          color: #333;
-        }
-        
-        .card-text {
-          font-size: 1rem;
-          color: #555;
-          margin-bottom: 8px;
-          display: flex;
-          align-items: center;
-          
-          i {
-            margin-right: 8px;
-            font-size: 1.2rem;
-            color: #007bff;
-          }
-          
-          strong {
-            margin-right: 5px;
-            color: #333;
-          }
-        }
-      }
-    }
+    min-height: 320px;
   }
-  
+
   .additional-content {
-    margin-top: 30px;
-    padding: 20px;
-    border: 2px dashed #ccc;
-    text-align: center;
-    color: #777;
+    margin-top: 2.5rem;
+    padding: 2rem;
+    border: 1px dashed rgba(107, 114, 128, 0.35);
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 250, 245, 0.7), rgba(255, 255, 255, 0.95));
   }
-  
-  .group-title {
-    font-size: 1.75rem;
-    color: #333;
-    margin-bottom: 20px;
+}
+
+@media (max-width: 991.98px) {
+  .home-page .filter-panel {
+    position: static;
   }
 }

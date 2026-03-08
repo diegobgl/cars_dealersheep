@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Snippet contenedor de contenido editable -->
   <template id="cars_dealersheep_content_container_snippet" name="Content Container">
     <t t-name="cars_dealersheep.content_container_snippet">
       <section class="s_content_container ui-draggable"
                data-oe-type="snippet"
-               data-oe-thumbnail="/cars_dealersheep/static/src/img/content_container_thumbnail.png"
+               data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
                data-oe-drop="true"
                data-snippet-id="content_container_snippet">
         <div class="container">
-          <!-- Esta área es editable; se pueden soltar otros snippets dentro -->
-          <div class="row" data-oe-drop="true">
-            <p class="o_default_snippet_text">Agrega aquí contenido adicional</p>
+          <div class="vehicle-snippet-heading text-center">
+            <span class="vehicle-snippet-kicker">Contenido libre</span>
+            <h2 class="o_default_snippet_text">Bloque flexible para campañas</h2>
+          </div>
+          <div class="row oe_structure" data-oe-drop="true">
+            <div class="col-12">
+              <p class="o_default_snippet_text text-center">Agrega aquí testimonios, financiamiento, garantías o contenido promocional.</p>
+            </div>
           </div>
         </div>
       </section>

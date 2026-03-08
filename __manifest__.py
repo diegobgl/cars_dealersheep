@@ -3,7 +3,7 @@
     'version': '1.0',
     'category': 'Website',
     'summary': 'Gestión y visualización de vehículos en Odoo Website',
-    'depends': ['website'],
+    'depends': ['website', 'mail'],
     'data': [
         'views/snippets/website_snippet_templates.xml', 
         'views/snippets/vehicle_snippet.xml', 

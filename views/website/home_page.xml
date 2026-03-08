@@ -3,51 +3,51 @@
   <template id="cars_dealersheep_home_page" name="Home Page Vehículos">
     <t t-call="website.layout">
       <div class="container home-page py-5">
-        <!-- Barra de búsqueda -->
-        <div class="search-bar mb-4">
-          <input type="text" id="vehicle_search_input" class="form-control" placeholder="Buscar vehículos..."/>
-        </div>
+        <section class="home-hero mb-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+              <span class="vehicle-snippet-kicker">Compra y venta en Chile</span>
+              <h1>Encuentra vehículos publicados con una ficha clara y filtros reales.</h1>
+              <p>Explora autos, camionetas, motos y camiones con información lista para vitrina digital y contacto comercial.</p>
+            </div>
+            <div class="col-lg-5">
+              <div class="search-bar">
+                <input type="text" id="vehicle_search_input" class="form-control" placeholder="Buscar por marca, modelo, patente o tipo"/>
+              </div>
+            </div>
+          </div>
+        </section>
         <div class="row">
-          <!-- Panel lateral de filtros -->
-          <div class="col-md-3 filter-panel">
-            <h4>Filtros</h4>
-            <div class="filter-group">
-              <label>Marca</label>
-              <select id="filter_brand" class="form-control">
-                <option value="">Todos</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Chevrolet">Chevrolet</option>
-                <option value="Ford">Ford</option>
-              </select>
-            </div>
-            <div class="filter-group mt-3">
-              <label>Año</label>
-              <select id="filter_year" class="form-control">
-                <option value="">Todos</option>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-              </select>
-            </div>
-            <div class="filter-group mt-3">
-              <label>Tipo</label>
-              <select id="filter_type" class="form-control">
-                <option value="">Todos</option>
-                <option value="auto">Auto</option>
-                <option value="camioneta">Camioneta</option>
-                <option value="camion">Camión</option>
-                <option value="moto">Moto</option>
-              </select>
-            </div>
+          <div class="col-lg-3 mb-4">
+            <aside class="filter-panel">
+              <h4>Filtros</h4>
+              <div class="filter-group">
+                <label for="filter_brand">Marca</label>
+                <select id="filter_brand" class="form-control">
+                  <option value="">Todas</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="filter_year">Año</label>
+                <select id="filter_year" class="form-control">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="filter_type">Tipo</label>
+                <select id="filter_type" class="form-control">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+              <div class="filter-summary text-muted small" id="filter_summary">Cargando inventario...</div>
+            </aside>
           </div>
-          <!-- Área central para listado de vehículos -->
-          <div class="col-md-9 vehicle-list-container">
-            <div id="home_vehicle_list"></div>
+          <div class="col-lg-9 vehicle-list-container">
+            <div id="home_vehicle_list" class="row"></div>
           </div>
         </div>
-        <!-- Contenedor editable para nuevos bloques -->
         <div class="additional-content oe_structure" data-oe-drop="true">
-          <p class="text-muted text-center">Arrastra aquí nuevos bloques para contenido adicional.</p>
+          <p class="text-muted text-center">Arrastra aquí nuevos bloques para testimonios, financiamiento o banners comerciales.</p>
         </div>
       </div>
     </t>

@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Snippet para mostrar un carrusel de vehículos -->
   <template id="cars_dealersheep_vehicle_carousel_snippet" name="Vehicle Carousel Snippet">
     <t t-name="cars_dealersheep.vehicle_carousel_snippet">
       <section class="s_vehicle_carousel ui-draggable"
                data-oe-type="snippet"
-               data-oe-thumbnail="/cars_dealersheep/static/src/img/vehicle_carousel_thumbnail.png"
+               data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
                data-oe-drop="true"
                data-snippet-id="vehicle_carousel_snippet">
         <div class="container">
-          <h2 class="text-center o_default_snippet_text mb-4">Carrusel de Vehículos</h2>
-          <div id="vehicleCarousel" class="carousel slide" data-ride="carousel">
+          <div class="vehicle-snippet-heading text-center">
+            <span class="vehicle-snippet-kicker">Vitrina</span>
+            <h2 class="o_default_snippet_text mb-4">Vehículos destacados</h2>
+          </div>
+          <div id="vehicleCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <!-- Los items del carrusel se generarán dinámicamente mediante JS -->
+              <div class="carousel-item active">
+                <div class="vehicle-empty-state">
+                  <p>Cargando vehículos...</p>
+                </div>
+              </div>
             </div>
-            <a class="carousel-control-prev" href="#vehicleCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#vehicleCarousel" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Anterior</span>
             </a>
-            <a class="carousel-control-next" href="#vehicleCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#vehicleCarousel" role="button" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Siguiente</span>
             </a>

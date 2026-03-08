@@ -4,15 +4,12 @@
     <t t-call="website.layout">
       <div class="vehicle-detail-page container py-5">
         <div class="row">
-          <!-- Columna izquierda: Imagen principal y carrusel/galería -->
-          <div class="col-md-7">
-            <!-- Imagen principal -->
+          <div class="col-lg-7 mb-4 mb-lg-0">
             <div class="main-image-container mb-3">
               <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'"
                    class="img-fluid main-vehicle-image"
                    alt="Imagen principal del vehículo"/>
             </div>
-            <!-- Carrusel / miniaturas (si tienes múltiples imágenes) -->
             <t t-if="vehicle.images">
               <div class="row thumb-gallery">
                 <t t-foreach="vehicle.images" t-as="img">
@@ -26,48 +23,52 @@
             </t>
           </div>
 
-          <!-- Columna derecha: información y especificaciones -->
-          <div class="col-md-5">
-            <div class="vehicle-info">
-              <!-- Nombre y año/kilometraje -->
+          <div class="col-lg-5">
+            <div class="vehicle-info-card">
+              <div class="vehicle-status-pill" t-if="vehicle.status">
+                <span t-field="vehicle.status"/>
+              </div>
               <h1 class="vehicle-title" t-esc="vehicle.name"/>
               <div class="vehicle-subinfo text-muted mb-2">
                 <t t-if="vehicle.year"><span t-esc="vehicle.year"/> | </t>
                 <t t-if="vehicle.mileage"><span t-esc="vehicle.mileage"/> kilómetros | </t>
-                <t t-if="vehicle.vehicle_type"><span t-esc="vehicle.vehicle_type"/></t>
+                <t t-if="vehicle.vehicle_type"><span t-field="vehicle.vehicle_type"/></t>
               </div>
-              <!-- Precio grande -->
-              <div class="vehicle-price mb-4">
-                <t t-if="vehicle.price">
-                  $<t t-esc="vehicle.price"/>
-                </t>
+              <div class="vehicle-price mb-4" t-if="vehicle.price">
+                CLP <t t-esc="('{:,.0f}'.format(vehicle.price)).replace(',', '.')"/>
               </div>
 
-              <!-- Lista de especificaciones (combustible, transmisión, etc.) -->
               <ul class="list-unstyled vehicle-specs">
-                <li t-if="vehicle.fuel_type"><strong>Combustible:</strong> <span t-esc="vehicle.fuel_type"/></li>
-                <li t-if="vehicle.transmission"><strong>Transmisión:</strong> <span t-esc="vehicle.transmission"/></li>
-                <li t-if="vehicle.status"><strong>Estado:</strong> <span t-esc="vehicle.status"/></li>
-                <li t-if="vehicle.brand"><strong>Marca:</strong> <span t-esc="vehicle.brand"/></li>
-                <li t-if="vehicle.model"><strong>Modelo:</strong> <span t-esc="vehicle.model"/></li>
-                <!-- Agrega más especificaciones según tu modelo -->
+                <li t-if="vehicle.brand"><strong>Marca</strong><span t-esc="vehicle.brand"/></li>
+                <li t-if="vehicle.model"><strong>Modelo</strong><span t-esc="vehicle.model"/></li>
+                <li t-if="vehicle.fuel_type"><strong>Combustible</strong><span t-field="vehicle.fuel_type"/></li>
+                <li t-if="vehicle.transmission"><strong>Transmisión</strong><span t-field="vehicle.transmission"/></li>
+                <li t-if="vehicle.patente"><strong>Patente</strong><span t-esc="vehicle.patente"/></li>
+                <li t-if="vehicle.review_date"><strong>Revisión técnica</strong><span t-field="vehicle.review_date"/></li>
               </ul>
 
-              <!-- Botones de acción -->
+              <div class="vehicle-docs" t-if="vehicle.circulation_permit or vehicle.registration_certificate or vehicle.soat or vehicle.certificate_of_history">
+                <span class="doc-chip" t-if="vehicle.circulation_permit">Permiso de circulación</span>
+                <span class="doc-chip" t-if="vehicle.registration_certificate">Inscripción</span>
+                <span class="doc-chip" t-if="vehicle.soat">SOAP</span>
+                <span class="doc-chip" t-if="vehicle.certificate_of_history">Multas</span>
+              </div>
+
               <div class="vehicle-actions mt-4">
-                <button class="btn btn-primary mr-2">Enviar mensaje</button>
-                <button class="btn btn-success">Contactar por WhatsApp</button>
+                <a href="/contactus" class="btn btn-dark mr-2">Solicitar contacto</a>
+                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success">WhatsApp</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Descripción completa -->
         <t t-if="vehicle.description">
           <div class="row mt-5">
             <div class="col-12">
-              <h4>Descripción</h4>
-              <p t-esc="vehicle.description"/>
+              <div class="vehicle-description-block">
+                <h4>Descripción</h4>
+                <p t-esc="vehicle.description"/>
+              </div>
             </div>
           </div>
         </t>

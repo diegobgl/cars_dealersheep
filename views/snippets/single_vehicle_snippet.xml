@@ -1,69 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Single Vehicle Snippet: Presenta la información del vehículo como una card -->
   <template id="cars_dealersheep_single_vehicle_snippet" name="Single Vehicle Snippet">
     <t t-name="cars_dealersheep.single_vehicle_snippet">
       <section class="s_single_vehicle_snippet ui-draggable"
                data-oe-type="snippet"
-               data-oe-thumbnail="/cars_dealersheep/static/src/img/single_vehicle_thumbnail.png"
+               data-oe-thumbnail="/cars_dealersheep/static/src/img/snippet_thumbnail.png"
                data-oe-drop="true"
                data-snippet-id="single_vehicle_snippet">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <div class="card vehicle-card">
-                <t t-if="vehicle">
-                  <img t-att-src="'/web/image/vehicle.vehicle/' + str(vehicle.id) + '/image'" class="card-img-top" alt="Imagen de vehículo"/>
-                </t>
-                <t t-else="">
-                  <img src="/cars_dealersheep/static/src/img/default_vehicle.png" class="card-img-top" alt="Imagen de vehículo por defecto"/>
-                </t>
+              <div class="card vehicle-card vehicle-card-featured">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23f3f4f6'/%3E%3Cpath d='M180 250h280l40 55H140z' fill='%23d1d5db'/%3E%3Ccircle cx='220' cy='320' r='32' fill='%239ca3af'/%3E%3Ccircle cx='420' cy='320' r='32' fill='%239ca3af'/%3E%3C/svg%3E" class="card-img-top" alt="Imagen de vehículo"/>
                 <div class="card-body">
-                  <t t-if="vehicle">
-                    <h5 class="card-title" t-esc="vehicle.name"/>
-                  </t>
-                  <t t-else="">
-                    <h5 class="card-title">Vehículo Destacado</h5>
-                  </t>
-                  <p class="card-text brand-field">
-                    <t t-if="vehicle">
-                      <i class="fa fa-car"></i> <strong>Marca:</strong> <span t-esc="vehicle.brand"/>
-                    </t>
-                    <t t-else="">[Marca]</t>
-                  </p>
-                  <p class="card-text model-field">
-                    <t t-if="vehicle">
-                      <i class="fa fa-cogs"></i> <strong>Modelo:</strong> <span t-esc="vehicle.model"/>
-                    </t>
-                    <t t-else="">[Modelo]</t>
-                  </p>
-                  <p class="card-text year-field">
-                    <t t-if="vehicle">
-                      <i class="fa fa-calendar"></i> <strong>Año:</strong> <span t-esc="vehicle.year"/>
-                    </t>
-                    <t t-else="">[Año]</t>
-                  </p>
-                  <p class="card-text price-field">
-                    <t t-if="vehicle">
-                      <i class="fa fa-money"></i> <strong>Precio:</strong> <span t-esc="vehicle.price"/> USD
-                    </t>
-                    <t t-else="">[Precio] USD</t>
-                  </p>
-                  <p class="card-text status-field">
-                    <t t-if="vehicle">
-                      <i class="fa fa-info-circle"></i> <strong>Estado:</strong> <span t-esc="vehicle.status"/>
-                    </t>
-                    <t t-else="">[Estado]</t>
-                  </p>
-                  <p class="card-text type-field">
-                    <t t-if="vehicle">
-                      <i class="fa fa-tag"></i> <strong>Tipo:</strong> <span t-esc="vehicle.vehicle_type"/>
-                    </t>
-                    <t t-else="">[Tipo]</t>
-                  </p>
-                  <p class="card-text description-field" t-if="vehicle and vehicle.description">
-                    <i class="fa fa-align-left"></i> <strong>Descripción:</strong> <span t-esc="vehicle.description"/>
-                  </p>
+                  <span class="vehicle-snippet-kicker">Destacado</span>
+                  <h5 class="card-title">Vehículo destacado</h5>
+                  <p class="card-text brand-field"><i class="fa fa-car"></i> <strong>Marca:</strong> <span>Marca</span></p>
+                  <p class="card-text model-field"><i class="fa fa-cogs"></i> <strong>Modelo:</strong> <span>Modelo</span></p>
+                  <p class="card-text year-field"><i class="fa fa-calendar"></i> <strong>Año:</strong> <span>Año</span></p>
+                  <p class="card-text price-field"><i class="fa fa-money"></i> <strong>Precio:</strong> <span>Precio</span></p>
+                  <p class="card-text status-field"><i class="fa fa-info-circle"></i> <strong>Estado:</strong> <span>Estado</span></p>
+                  <p class="card-text type-field"><i class="fa fa-tag"></i> <strong>Tipo:</strong> <span>Tipo</span></p>
+                  <p class="card-text description-field"><i class="fa fa-align-left"></i> <strong>Descripción:</strong> <span>Descripción breve del vehículo destacado.</span></p>
+                  <a href="#" class="btn btn-dark vehicle-detail-link">Ver ficha completa</a>
                 </div>
               </div>
             </div>
